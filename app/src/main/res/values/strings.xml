@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MatchFixing</string>
+    <string name="usernameField">Gebruikersnaam</string>
+    <string name="passwordField">000000</string>
+    <string name="loginBtn">Inloggen</string>
+    <string name="rememberCheckBox">Inloggegevens onthouden?</string>
+    <string name="registerText">Heeft u nog geen inloggegevens? klik hier om te registeren.</string>
+
+</resources>
