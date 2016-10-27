@@ -18,7 +18,7 @@ public class Home extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome);
+        setContentView(R.layout.home);
 
         nameTV = (TextView) findViewById(R.id.name_field);
 
@@ -27,23 +27,23 @@ public class Home extends Activity {
         nameTV.setText("Welcome " + name);
     }
 
+    public void profile_profile(View view) {
+        startActivity(new Intent(this, Profile.class));
+    }
+
     public void calender_calender(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, Register.class));
     }
 
     public void invites_invites(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, Register.class));
     }
 
     public void group_group(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, Register.class));
     }
 
     public void matchmaker_matchmaker(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
-    }
-
-    public void profile_profile(View view) {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, Register.class));
     }
 }

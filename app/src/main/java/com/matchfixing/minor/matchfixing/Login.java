@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import org.json.JSONException;
@@ -21,7 +18,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class MainActivity extends Activity {
+public class Login extends Activity {
 
     EditText name, password;
     String Name, Password;
@@ -31,20 +28,22 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.login);
         name = (EditText) findViewById(R.id.main_name);
         password = (EditText) findViewById(R.id.main_password);
     }
 
     public void ButtonOnClick(View view)
     {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, Register.class));
     }
     public void main_login(View v){
-        Name = name.getText().toString();
-        Password = password.getText().toString();
-        BackGround b = new BackGround();
-        b.execute(Name, Password);
+        startActivity(new Intent(this, Home.class));
+//Functionaliteit even uitgezet voor demo.
+//        Name = name.getText().toString();
+//        Password = password.getText().toString();
+//        BackGround b = new BackGround();
+//        b.execute(Name, Password);
     }
 
     class BackGround extends AsyncTask<String, String, String> {

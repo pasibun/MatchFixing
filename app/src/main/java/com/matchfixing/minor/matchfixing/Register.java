@@ -8,21 +8,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
 /**
  * Created by jylti on 9-9-2016.
  */
-public class RegisterActivity extends Activity {
+public class Register extends Activity {
 
     EditText nameField, passwordField, passwordCheckField, ageField, playerClassField;
     String Name, Password, PasswordCheck, Age, PlayerClass;
@@ -31,7 +25,7 @@ public class RegisterActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.Register);
 
         nameField = (EditText)findViewById(R.id.edtuserid);
         passwordField = (EditText)findViewById(R.id.edtpass);
