@@ -25,7 +25,7 @@ public class Register extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.Register);
+        setContentView(R.layout.register);
 
         nameField = (EditText)findViewById(R.id.edtuserid);
         passwordField = (EditText)findViewById(R.id.edtpass);
