@@ -1,4 +1,4 @@
-package com.example.test;
+package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
 import android.content.Context;

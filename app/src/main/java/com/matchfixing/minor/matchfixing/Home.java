@@ -1,4 +1,4 @@
-package com.example.test;
+package com.matchfixing.minor.matchfixing;
 
 /**
  * Created by jylti on 22-9-2016.
