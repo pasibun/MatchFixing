@@ -40,7 +40,7 @@ public class Home extends Activity {
     }
 
     public void group_group(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, Group.class));
     }
 
     public void matchmaker_matchmaker(View view) {

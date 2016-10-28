@@ -10,6 +10,7 @@
     <string name="Groups">Groepen beheren</string>
     <string name="Invites">Mijn uitnodigingen</string>
     <string name="Calender">Kalender</string>
+    <string name="CreateGroup">Opslaan</string>
 
 
 </resources>

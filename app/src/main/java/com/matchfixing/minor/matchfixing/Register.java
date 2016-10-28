@@ -41,7 +41,7 @@ public class Register extends Activity {
         PasswordCheck = passwordCheckField.getText().toString();
         Age = ageField.getText().toString();
         PlayerClass = playerClassField.getText().toString();
-        if (Password == PasswordCheck) {
+        if (Password.equals(PasswordCheck)) {
 
             BackGround b = new BackGround();
             b.execute(Name, Password, Age, PlayerClass);
