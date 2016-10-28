@@ -42,12 +42,13 @@ public class RegisterActivity extends Activity {
 
     public void register_register(View v){
 
+
         Name = nameField.getText().toString();
         Password = passwordField.getText().toString();
         PasswordCheck = passwordCheckField.getText().toString();
         Age = ageField.getText().toString();
         PlayerClass = playerClassField.getText().toString();
-        if (Password == PasswordCheck) {
+        if (Password.equals(PasswordCheck)) {
 
             BackGround b = new BackGround();
             b.execute(Name, Password, Age, PlayerClass);
@@ -71,7 +72,7 @@ public class RegisterActivity extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.218.197:80/connection.php");
+                URL url = new URL("http://141.252.224.175:80/connection.php");
                 String urlParams = "username=" + username + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
