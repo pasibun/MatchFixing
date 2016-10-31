@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 
     public void ButtonOnClick(View view)
     {
-        startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, MatchCalendar.class));
     }
     public void main_login(View v){
         Name = name.getText().toString();
