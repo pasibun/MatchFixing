@@ -6,20 +6,6 @@
     android:background="#282828"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:typeface="sans"
-        android:textSize="35sp"
-        android:textColor="#00aa55"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_above="@+id/btnProfile"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:id="@+id/name_field"/>
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

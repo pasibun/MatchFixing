@@ -18,8 +18,8 @@ public class Group extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.groupControl);
-        groupNameField = (EditText)findViewById(R.id.createGroup);
+        setContentView(R.layout.groupcontrol);
+        groupNameField = (EditText)findViewById(R.id.textCreateGroup);
     }
     //Hier moet nog ff duidelijk een koppeling komen tusse gebruiker en de groep.
     public void group_group(View view) {
@@ -28,7 +28,7 @@ public class Group extends Activity {
         if (groupName != null){
             Groups_Object go = new Groups_Object(groupName);
         }else{
-            String errorMsg = "Please enter a group name.";
+            String errorMsg = "Voer een groepsnaam in.";
             Toast.makeText(ctx, errorMsg, Toast.LENGTH_LONG).show();
         }
     }
