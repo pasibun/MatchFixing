@@ -261,7 +261,7 @@ public class NewMatchActivity extends AppCompatActivity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.175:80/newMatch.php");
+                URL url = new URL("http://141.252.224.181:80/newMatch.php");
                 String urlParams = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

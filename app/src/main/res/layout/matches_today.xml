@@ -39,4 +39,9 @@
         android:textColor="#ffffff"
         android:layout_gravity="right" />
 
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="443dp"
+        android:id="@+id/gridView" />
+
 </LinearLayout>
