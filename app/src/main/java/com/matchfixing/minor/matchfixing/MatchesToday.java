@@ -2,9 +2,13 @@ package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -39,6 +43,8 @@ public class MatchesToday extends Activity{
     List<String> matches;
     GridView matchGrid;
 
+    private int previousSelectedPosition = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +53,9 @@ public class MatchesToday extends Activity{
         matches = new ArrayList<String>();
 
         txtView = (TextView) findViewById(R.id.textView2);
-        dateText = (TextView) findViewById(R.id.textView3);
-        timeText = (TextView) findViewById(R.id.textView4);
-        typeText = (TextView) findViewById(R.id.textView5);
+       // dateText = (TextView) findViewById(R.id.textView3);
+      //  timeText = (TextView) findViewById(R.id.textView4);
+       // typeText = (TextView) findViewById(R.id.textView5);
 
         matchGrid = (GridView) findViewById(R.id.gridView);
 
@@ -74,7 +80,7 @@ public class MatchesToday extends Activity{
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.181:80/GetMatch.php");
+                URL url = new URL("http://141.252.224.164:80/GetMatch.php");
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -117,12 +123,40 @@ public class MatchesToday extends Activity{
 
                     matches.add(MATCHTIME + " " + MATCHTYPE);
 
-                    dateText.setText(MATCHDATE);
-                    timeText.setText(MATCHTIME);
-                    typeText.setText(MATCHTYPE);
+                    final GridView gv = (GridView) findViewById(R.id.gridView);
+                    gv.setAdapter(new GridViewAdapter(MatchesToday.this, matches){
+                        public View getView(int position, View convertView, ViewGroup parent){
+                            View view = super.getView(position, convertView, parent);
 
-                    GridView gv = (GridView) findViewById(R.id.gridView);
-                    gv.setAdapter(new GridViewAdapter(MatchesToday.this, matches));
+                            TextView tv = (TextView) view;
+                            tv.setTextColor(Color.WHITE);
+                            tv.setTextSize(25);
+                            return tv;
+                        }
+                    });
+
+                    gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            TextView tv = (TextView) view;
+                            tv.setTextColor(Color.RED);
+
+                            TextView previousSelectedView = (TextView) gv.getChildAt(previousSelectedPosition);
+
+                            // If there is a previous selected view exists
+                            if (previousSelectedPosition != -1)
+                            {
+                                // Set the last selected View to deselect
+                                previousSelectedView.setSelected(false);
+
+                                // Set the last selected View text color as deselected item
+                                previousSelectedView.setTextColor(Color.WHITE);
+                            }
+
+                            // Set the current selected view position as previousSelectedPosition
+                            previousSelectedPosition = position;
+                        }
+                    });
 
 
                 } catch (JSONException e) {
