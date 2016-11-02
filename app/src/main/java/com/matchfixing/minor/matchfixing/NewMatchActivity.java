@@ -2,26 +2,10 @@ package com.matchfixing.minor.matchfixing;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.SimpleTimeZone;
-
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,10 +14,11 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class NewMatchActivity extends AppCompatActivity {
 
@@ -223,9 +208,11 @@ public class NewMatchActivity extends AppCompatActivity {
     {
         ParseDate();
         ParseTime();
+        String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
+        String fileName = "newMatch.php";
 
-        BackGround b = new BackGround();
-        b.execute(dateString, timeString, matchType);
+        DbConnection b = new DbConnection();
+        b.inputDatabase(databaseInfo, fileName, null);
     }
 
     private void ParseTime()
@@ -250,51 +237,51 @@ public class NewMatchActivity extends AppCompatActivity {
         }
     }
 
-    class BackGround extends AsyncTask<String, String, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            String matchDate = params[0];
-            String matchTime = params[1];
-            String matchType = params[2];
-            String data="";
-            int tmp;
-
-            try {
-                URL url = new URL("http://141.252.224.181:80/newMatch.php");
-                String urlParams = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
-
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setRequestMethod("POST");
-
-                OutputStream os = httpURLConnection.getOutputStream();
-                os.write(urlParams.getBytes());
-                os.flush();
-                os.close();
-
-                InputStream is = httpURLConnection.getInputStream();
-
-                while ((tmp = is.read()) != -1) {
-                    data += (char) tmp;
-                }
-
-                is.close();
-
-                httpURLConnection.disconnect();
-
-                return data;
-
-            } catch (Exception e) {
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-
-            s="Data saved successfully.";
-            Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
-        }
-    }
+//    class BackGround extends AsyncTask<String, String, String> {
+//
+//        @Override
+//        protected String doInBackground(String... params) {
+//            String matchDate = params[0];
+//            String matchTime = params[1];
+//            String matchType = params[2];
+//            String data="";
+//            int tmp;
+//
+//            try {
+//                URL url = new URL("http://141.252.224.181:80/newMatch.php");
+//                String urlParams = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
+//
+//                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+//                httpURLConnection.setDoOutput(true);
+//                httpURLConnection.setRequestMethod("POST");
+//
+//                OutputStream os = httpURLConnection.getOutputStream();
+//                os.write(urlParams.getBytes());
+//                os.flush();
+//                os.close();
+//
+//                InputStream is = httpURLConnection.getInputStream();
+//
+//                while ((tmp = is.read()) != -1) {
+//                    data += (char) tmp;
+//                }
+//
+//                is.close();
+//
+//                httpURLConnection.disconnect();
+//
+//                return data;
+//
+//            } catch (Exception e) {
+//                return new String("Exception: " + e.getMessage());
+//            }
+//        }
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//
+//            s="Data saved successfully.";
+//            Toast.makeText(ctx, s, Toast.LENGTH_LONG).show();
+//        }
+//    }
 }

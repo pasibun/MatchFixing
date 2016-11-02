@@ -32,8 +32,10 @@ public class Login extends Activity {
 //Functionaliteit even uitgezet voor demo.
 //        Name = name.getText().toString();
 //        Password = password.getText().toString();
-//        BackGround b = new BackGround();
-//        b.execute(Name, Password);
+//        DBConnection b = new DBConnection();
+//        String databaseInfo = "name="+name+"&password="+password;
+//        String file = "login.php";
+//        b.inputDatabase(databaseInfo, file, "Profile");
     }
 }
 

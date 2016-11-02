@@ -28,7 +28,10 @@ public class Home extends Activity {
     }
 
     public void profile_profile(View view) {
+
         startActivity(new Intent(this, Profile.class));
+        DbConnection b = new DbConnection();
+        b.inputDatabase(null, null, "Profile");
     }
 
     public void calender_calender(View view) {

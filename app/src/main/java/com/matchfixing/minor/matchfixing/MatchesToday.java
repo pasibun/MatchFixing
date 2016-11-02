@@ -65,10 +65,13 @@ public class MatchesToday extends Activity{
 
         txtView.setText(day + "-" + month + "-" + year);
 
+        String databaseInfo = "day=" + day + "&month=" + month + "&year=" + year;
+        String file = "GetMatch.php";
         BackGround b = new BackGround();
-        b.execute(day, month, year);
+        b.execute(databaseInfo, file, "MatchesToday");
     }
-
+    //onPostExecute samen ff nakijken.
+    // Waarom kan hier wel findViewById en in mijn classe niet.
     class BackGround extends AsyncTask<String, String, String> {
 
         @Override

@@ -36,10 +36,11 @@ public class Register extends Activity {
         age = ageField.getText().toString();
         playerClass = playerClassField.getText().toString();
         if (password.equals(passwordcheck)) {
-            String input = "username=" + name + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
+            String databaseInput = "username=" + name + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
             String msg = "Data saved successfully";
+            String file = "connection.php";
             DbConnection b = new DbConnection();
-            b.inputDatabase(input, "connection.php");
+            b.inputDatabase(databaseInput, file, null);
             Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
         }
         else{
