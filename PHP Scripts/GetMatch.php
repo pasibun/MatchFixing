@@ -6,7 +6,7 @@ $day = $_POST["day"];
 $month = $_POST["month"];
 $year = $_POST["year"];
  
-$sql = "SELECT * FROM `matches` WHERE `matchDate`='".$year."-".$month."-".$day."';";
+$sql = "SELECT * FROM `matches` WHERE `matchDate`='".$year."-".$month."-".$day."' ORDER BY `matchTime`;";
 $result = mysqli_query($con, $sql);
  
 $response = array();
