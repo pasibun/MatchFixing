@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MatchFixing</string>
+    <string name="usernameField">Gebruikersnaam</string>
+    <string name="passwordField">000000</string>
+    <string name="loginBtn">Inloggen</string>
+    <string name="rememberCheckBox">Inloggegevens onthouden?</string>
+    <string name="registerText">Heeft u nog geen inloggegevens? klik hier om te registeren.</string>
+    <string name="profile">Profiel</string>
+    <string name="matchmaker">Match maken</string>
+    <string name="Groups">Groepen beheren</string>
+    <string name="Invites">Mijn uitnodigingen</string>
+    <string name="Calender">Kalender</string>
+    <string name="CreateGroup">Opslaan</string>
+
+
+</resources>
