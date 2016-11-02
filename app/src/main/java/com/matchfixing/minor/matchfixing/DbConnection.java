@@ -17,10 +17,11 @@ import java.net.URL;
  */
 
 public class DbConnection extends AsyncTask<String, String, String>{
-    private String name = null, password = null, age = null, kaliber = null, gender = null;
+    private String name = null, password = null, age = null, kaliber = null, gender = null, exput;
 
-    public String inputDatabase(String inputDb, String file){
+    public String inputDatabase(String inputDb, String file, String exput){
         String data="";
+        this.exput = exput;
         int tmp;
         try {
             URL url = new URL("http://141.252.208.119:80/" +  file);
@@ -57,6 +58,17 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String s) {
+        switch(exput){
+            case "bla":{
+                break;
+            }
+            case "bla1":{
+                break;
+            }
+            case "bla2":{
+                break;
+            }
+        }
         try {
             JSONObject root = new JSONObject(s);
             JSONObject user_data = root.getJSONObject("user_data");
@@ -72,4 +84,5 @@ public class DbConnection extends AsyncTask<String, String, String>{
             e.printStackTrace();
         }
     }
+
 }
