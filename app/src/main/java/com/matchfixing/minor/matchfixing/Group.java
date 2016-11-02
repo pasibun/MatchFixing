@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Group extends Activity {
-    private Context ctx=this;
+    private Context ctx = this;
     private EditText groupNameField;
     private String groupName;
 

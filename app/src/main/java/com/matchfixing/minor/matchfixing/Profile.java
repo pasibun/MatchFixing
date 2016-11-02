@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 public class Profile extends Activity {
 
-    String name, password, age, kaliber;
-    TextView nameTV, ageTV, passwordTV, kaliberTV;
+    static String name, password, age, kaliber, info;
+    private TextView nameTV, ageTV, passwordTV, kaliberTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +23,14 @@ public class Profile extends Activity {
         passwordTV = (TextView) findViewById(R.id.age_field);
         kaliberTV = (TextView) findViewById(R.id.kaliber_field);
 
-        name = getIntent().getStringExtra("name");
-        password = getIntent().getStringExtra("password");
-        age = getIntent().getStringExtra("age");
-        kaliber = getIntent().getStringExtra("kaliber");
+//        name = getIntent().getStringExtra("name");
+//        password = getIntent().getStringExtra("password");
+//        age = getIntent().getStringExtra("age");
+//        kaliber = getIntent().getStringExtra("kaliber");
 
-        nameTV.setText("Welcome "+name);
-        passwordTV.setText("Your password is "+password);
-        ageTV.setText("Your age is "+age);
+        nameTV.setText("Welcome " + name);
+        passwordTV.setText("Your password is " + password);
+        ageTV.setText("Your age is " + age);
         kaliberTV.setText("Kaliber: " + kaliber);
     }
 }
