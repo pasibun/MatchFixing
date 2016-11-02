@@ -20,13 +20,13 @@ import java.util.Map;
 
 public class DbConnection extends AsyncTask<String, String, String>{
     private String name = null, password = null, age = null, kaliber = null, gender = null,
-            exput, MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE;
+            export, MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE;
     List<String> matches;
     Map<String, Integer> matchIDs;
     private int previousSelectedPosition = -1;
 
-    public String inputDatabase(String inputDb, String file, String exput){
-        this.exput = exput;
+    public String inputDatabase(String inputDb, String file, String export){
+        this.export = export;
         if (inputDb != null || file != null) {
             String data = "";
             int tmp;
@@ -70,7 +70,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String s) {
-        switch(exput){
+        switch(export){
             case "Profile":{
                 try {
                     JSONObject root = new JSONObject(s);
