@@ -7,13 +7,13 @@ import java.util.Date;
  */
 
 public class Users_Object {
-    private String fName, lName, email, password, address, city, sex;
+    private String fName, lName, email, password, address, city, sex, username;
     private Date dateOfBirth;
-    private int username, mobilePhone, phone;
+    private int mobilePhone, phone;
     private double scoreSingle, scoreDouble;
 
     public Users_Object(String fName, String lName, String email, String password, String address,
-                        String city, String sex, Date dateOfBirth, int username, int mobilePhone,
+                        String city, String sex, Date dateOfBirth, String username, int mobilePhone,
                         int phone, double scoreSingle, double scoreDouble){
         this.fName = fName;
         this.lName = lName;
@@ -50,7 +50,7 @@ public class Users_Object {
         return phone;
     }
 
-    public int getUsername() {
+    public String getUsername() {
         return username;
     }
 
@@ -130,7 +130,7 @@ public class Users_Object {
         this.sex = sex;
     }
 
-    public void setUsername(int username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 }

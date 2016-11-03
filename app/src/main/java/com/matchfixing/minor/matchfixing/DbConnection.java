@@ -31,7 +31,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.208.119:80/" + file);
+                URL url = new URL("http://141.252.208.227:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -65,7 +65,10 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected String doInBackground(String... params) {
-        return null;
+        String inputDb = params[0];
+        String file = params[1];
+        String export = params[2];
+        return inputDatabase(inputDb, file, export);
     }
 
     @Override
@@ -83,6 +86,9 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     Profile.age = age;
                     kaliber = user_data.getString("kaliber");
                     Profile.kaliber = kaliber;
+
+                    Users_Object uo = new Users_Object(null,null,null,password,null,null,null,null,name,0, 0,0.0,0.0);
+                    Login.checkLoginInfo(uo);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

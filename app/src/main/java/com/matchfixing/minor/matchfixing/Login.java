@@ -10,9 +10,10 @@ import android.widget.EditText;
 public class Login extends Activity {
 
     EditText name, password;
-    String Name, Password;
+    static String Name, Password;
     Context ctx=this;
     String NAME=null, PASSWORD=null, AGE=null, KALIBER = null, GENDER = null;
+    private static Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +29,20 @@ public class Login extends Activity {
     }
 
     public void main_login(View v){
-        startActivity(new Intent(this, Home.class));
-//Functionaliteit even uitgezet voor demo.
-//        Name = name.getText().toString();
-//        Password = password.getText().toString();
-//        DBConnection b = new DBConnection();
-//        String databaseInfo = "name="+name+"&password="+password;
-//        String file = "login.php";
-//        b.inputDatabase(databaseInfo, file, "Profile");
+        //startActivity(new Intent(this, Home.class));
+        Name = name.getText().toString();
+        Password = password.getText().toString();
+        DbConnection b = new DbConnection();
+        String databaseInfo = "name="+name+"&password="+password;
+        String file = "login.php";
+        b.execute(databaseInfo, file, "Profile");
+    }
+
+    public static void checkLoginInfo(Users_Object us){
+        if (Name.equals(us.getUsername()) && Password.equals(us.getPassword())){
+            Intent login = new Intent(mContext, Home.class);
+            mContext.startActivity(login);
+        }
     }
 }
 

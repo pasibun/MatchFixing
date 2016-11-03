@@ -20,18 +20,18 @@ public class Home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        nameTV = (TextView) findViewById(R.id.name_field);
-
-        name = getIntent().getStringExtra("name");
-
-        nameTV.setText("Welcome " + name);
+//        nameTV = (TextView) findViewById(R.id.name_field);
+//
+//        name = getIntent().getStringExtra("name");
+//
+//        nameTV.setText("Welcome " + name);
     }
 
     public void profile_profile(View view) {
 
-        startActivity(new Intent(this, Profile.class));
-        DbConnection b = new DbConnection();
-        b.inputDatabase(null, null, "Profile");
+//        startActivity(new Intent(this, Profile.class));
+//        DbConnection b = new DbConnection();
+//        b.execute(null, null, "Profile");
     }
 
     public void calender_calender(View view) {

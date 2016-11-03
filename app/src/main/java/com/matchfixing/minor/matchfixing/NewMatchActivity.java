@@ -210,9 +210,8 @@ public class NewMatchActivity extends AppCompatActivity {
         ParseTime();
         String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
         String fileName = "newMatch.php";
-
         DbConnection b = new DbConnection();
-        b.inputDatabase(databaseInfo, fileName, null);
+        b.execute(databaseInfo, fileName, null);
     }
 
     private void ParseTime()

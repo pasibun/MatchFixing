@@ -40,7 +40,7 @@ public class Register extends Activity {
             String msg = "Data saved successfully";
             String file = "connection.php";
             DbConnection b = new DbConnection();
-            b.inputDatabase(databaseInput, file, null);
+            b.execute(databaseInput, file, null);
             Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
         }
         else{
