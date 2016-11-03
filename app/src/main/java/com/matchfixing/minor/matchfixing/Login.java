@@ -21,6 +21,7 @@ public class Login extends Activity {
         setContentView(R.layout.login);
         name = (EditText) findViewById(R.id.main_name);
         password = (EditText) findViewById(R.id.main_password);
+        mContext = this;
     }
 
     public void ButtonOnClick(View view)
@@ -33,7 +34,7 @@ public class Login extends Activity {
         Name = name.getText().toString();
         Password = password.getText().toString();
         DbConnection b = new DbConnection();
-        String databaseInfo = "name="+name+"&password="+password;
+        String databaseInfo = "name="+Name+"&password="+Password;
         String file = "login.php";
         b.execute(databaseInfo, file, "Profile");
     }

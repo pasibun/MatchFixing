@@ -27,11 +27,11 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     public String inputDatabase(String inputDb, String file, String export){
         this.export = export;
-        if (inputDb != null || file != null) {
+        //if (inputDb != null || file != null) {
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.208.227:80/" + file);
+                URL url = new URL("http://141.252.224.187:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -48,7 +48,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 is.close();
                 httpURLConnection.disconnect();
 
-                return data;
+
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 return "Exception: " + e.getMessage();
@@ -56,11 +56,13 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 e.printStackTrace();
                 return "Exception: " + e.getMessage();
             }
-        }
-        else {
-            execute();
-            return null;
-        }
+        return data;
+       // }
+       // return null;
+//        else {
+//            execute();
+//            return null;
+//        }
     }
 
     @Override
@@ -68,13 +70,15 @@ public class DbConnection extends AsyncTask<String, String, String>{
         String inputDb = params[0];
         String file = params[1];
         String export = params[2];
-        return inputDatabase(inputDb, file, export);
+        String testreturn = inputDatabase(inputDb, file, export);
+
+        return testreturn;
     }
 
     @Override
     protected void onPostExecute(String s) {
-        switch(export){
-            case "Profile":{
+        //switch(export){
+         //   case "Profile":{
                 try {
                     JSONObject root = new JSONObject(s);
                     JSONObject user_data = root.getJSONObject("user_data");
@@ -92,9 +96,9 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
-            }
-            case "MatchesToday":{
+     //          break;
+      //      }
+     //       case "MatchesToday":{
 //                String err = null;
 //                String[] matchStrings = s.split("&");
 //                int fieldID = -1;
@@ -153,8 +157,8 @@ public class DbConnection extends AsyncTask<String, String, String>{
 //                        previousSelectedPosition = position;
 //                    }
 //                });
-                break;
-            }
-        }
+       //         break;
+       //     }
+       // }
     }
 }
