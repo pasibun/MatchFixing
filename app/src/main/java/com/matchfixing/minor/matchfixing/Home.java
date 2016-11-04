@@ -35,7 +35,7 @@ public class Home extends Activity {
     }
 
     public void calender_calender(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, MatchCalendar.class));
     }
 
     public void invites_invites(View view) {
@@ -47,6 +47,6 @@ public class Home extends Activity {
     }
 
     public void matchmaker_matchmaker(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, NewMatchActivity.class));
     }
 }

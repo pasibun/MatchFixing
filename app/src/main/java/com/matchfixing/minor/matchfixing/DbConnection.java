@@ -1,6 +1,7 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,7 +12,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -31,7 +35,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.187:80/" + file);
+                URL url = new URL("http://141.252.224.178:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -77,8 +81,8 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String s) {
-        //switch(export){
-         //   case "Profile":{
+        switch(export){
+            case "Profile":{
                 try {
                     JSONObject root = new JSONObject(s);
                     JSONObject user_data = root.getJSONObject("user_data");
@@ -96,31 +100,36 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-     //          break;
-      //      }
-     //       case "MatchesToday":{
-//                String err = null;
-//                String[] matchStrings = s.split("&");
-//                int fieldID = -1;
-//
-//                for(int i = 0; i < matchStrings.length; ++i)
-//                {
-//                    try {
-//                        JSONObject root = new JSONObject(matchStrings[i]);
-//                        JSONObject user_data = root.getJSONObject("user_data");
-//                        MATCHID = user_data.getString("MatchID");
-//                        MATCHDATE = user_data.getString("matchDate");
-//                        MATCHTIME = user_data.getString("matchTime");
-//                        MATCHTYPE = user_data.getString("MatchType");
-//
-//                        matches.add(MATCHTIME + " " + MATCHTYPE);
-//                        matchIDs.put(MATCHTIME + " " + MATCHTYPE, Integer.parseInt(MATCHID));
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                        err = "Exception: " + e.getMessage();
-//                    }
-//                }
+               break;
+            }
+            case "MatchesToday":{
+                String err = null;
+                String[] matchStrings = s.split("&");
+                int fieldID = -1;
+
+                for(int i = 0; i < matchStrings.length; ++i)
+                {
+                    try {
+                        JSONObject root = new JSONObject(matchStrings[i]);
+                        JSONObject user_data = root.getJSONObject("user_data");
+                        MATCHID = user_data.getString("MatchID");
+                        MATCHDATE = user_data.getString("matchDate");
+                        MATCHTIME = user_data.getString("matchTime");
+                        MATCHTYPE = user_data.getString("MatchType");
+
+                        matches.add(MATCHTIME + " " + MATCHTYPE);
+                        matchIDs.put(MATCHTIME + " " + MATCHTYPE, Integer.parseInt(MATCHID));
+
+                       // MatchesToday mt = new MatchesToday();
+                        //mt.matches = matches;
+                       // mt.matchIDs = matchIDs;
+                       // mt.SetupView();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        err = "Exception: " + e.getMessage();
+                    }
+                }
 //                final GridView gv = (GridView) findViewById(R.id.gridView);
 //                gv.setAdapter(new GridViewAdapter(MatchesToday.this, matches){
 //                    public View getView(int position, View convertView, ViewGroup parent){
@@ -157,8 +166,8 @@ public class DbConnection extends AsyncTask<String, String, String>{
 //                        previousSelectedPosition = position;
 //                    }
 //                });
-       //         break;
-       //     }
-       // }
+                break;
+            }
+        }
     }
 }

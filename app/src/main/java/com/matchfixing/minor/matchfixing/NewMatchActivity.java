@@ -40,8 +40,8 @@ public class NewMatchActivity extends AppCompatActivity {
     public String dateString;
     public String timeString;
 
-    Date matchDate;
-    Date matchTime;
+    String matchDate;
+    String matchTime;
     String matchType;
 
     Context ctx=this;
@@ -211,29 +211,19 @@ public class NewMatchActivity extends AppCompatActivity {
         String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
         String fileName = "newMatch.php";
         DbConnection b = new DbConnection();
-        b.execute(databaseInfo, fileName, null);
+        b.execute(databaseInfo, fileName, "NewMatch");
     }
 
     private void ParseTime()
     {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-        try {
-            matchTime = format.parse(timeString);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        matchTime = timeString;
     }
 
     private void ParseDate()
     {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        try {
-            matchDate = format.parse(dateString);
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        matchDate = dateString;
     }
 
 //    class BackGround extends AsyncTask<String, String, String> {
