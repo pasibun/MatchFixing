@@ -12,7 +12,9 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -101,72 +103,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     e.printStackTrace();
                 }
                break;
-            }
-            case "MatchesToday":{
-                String err = null;
-                String[] matchStrings = s.split("&");
-                int fieldID = -1;
 
-                for(int i = 0; i < matchStrings.length; ++i)
-                {
-                    try {
-                        JSONObject root = new JSONObject(matchStrings[i]);
-                        JSONObject user_data = root.getJSONObject("user_data");
-                        MATCHID = user_data.getString("MatchID");
-                        MATCHDATE = user_data.getString("matchDate");
-                        MATCHTIME = user_data.getString("matchTime");
-                        MATCHTYPE = user_data.getString("MatchType");
-
-                        matches.add(MATCHTIME + " " + MATCHTYPE);
-                        matchIDs.put(MATCHTIME + " " + MATCHTYPE, Integer.parseInt(MATCHID));
-
-                       // MatchesToday mt = new MatchesToday();
-                        //mt.matches = matches;
-                       // mt.matchIDs = matchIDs;
-                       // mt.SetupView();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        err = "Exception: " + e.getMessage();
-                    }
-                }
-//                final GridView gv = (GridView) findViewById(R.id.gridView);
-//                gv.setAdapter(new GridViewAdapter(MatchesToday.this, matches){
-//                    public View getView(int position, View convertView, ViewGroup parent){
-//                        View view = super.getView(position, convertView, parent);
-//
-//                        TextView tv = (TextView) view;
-//                        tv.setTextColor(Color.WHITE);
-//
-//                        tv.setBackgroundColor(Color.parseColor("#ff0000"));
-//                        tv.setTextSize(25);
-//
-//                        return tv;
-//                    }
-//                });
-//
-//                gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        TextView tv = (TextView) view;
-//                        tv.setTextColor(Color.RED);
-//
-//                        TextView previousSelectedView = (TextView) gv.getChildAt(previousSelectedPosition);
-//
-//                        //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
-//                        int a = matchIDs.get(matches.get(position));
-//
-//                        // If there is a previous selected view exists
-//                        if (previousSelectedPosition != -1)
-//                        {
-//                            previousSelectedView.setSelected(false);
-//
-//                            previousSelectedView.setTextColor(Color.WHITE);
-//                        }
-//                        previousSelectedPosition = position;
-//                    }
-//                });
-                break;
             }
         }
     }
