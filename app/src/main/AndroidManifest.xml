@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".Group">
         </activity>
+        <activity android:name=".Invitation">
+        </activity>
     </application>
 
 </manifest>

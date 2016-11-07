@@ -30,7 +30,7 @@ public class Home extends Activity {
     }
 
     public void invites_invites(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, Invitation.class));
     }
 
     public void group_group(View view) {
