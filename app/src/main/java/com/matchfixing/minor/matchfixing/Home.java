@@ -19,19 +19,10 @@ public class Home extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
-
-//        nameTV = (TextView) findViewById(R.id.name_field);
-//
-//        name = getIntent().getStringExtra("name");
-//
-//        nameTV.setText("Welcome " + name);
     }
 
     public void profile_profile(View view) {
-
-//        startActivity(new Intent(this, Profile.class));
-//        DbConnection b = new DbConnection();
-//        b.execute(null, null, "Profile");
+        startActivity(new Intent(this, Profile.class));
     }
 
     public void calender_calender(View view) {
@@ -39,7 +30,7 @@ public class Home extends Activity {
     }
 
     public void invites_invites(View view) {
-        startActivity(new Intent(this, Register.class));
+        startActivity(new Intent(this, Invitation.class));
     }
 
     public void group_group(View view) {

@@ -30,6 +30,12 @@
         <activity android:name=".Popup"
             android:theme = "@style/AppTheme.CustomTheme">
         </activity>
+        <activity android:name=".Profile" >
+        </activity>
+        <activity android:name=".Group">
+        </activity>
+        <activity android:name=".Invitation">
+        </activity>
     </application>
 
 </manifest>

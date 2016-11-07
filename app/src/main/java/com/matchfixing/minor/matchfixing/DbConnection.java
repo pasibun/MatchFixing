@@ -1,7 +1,6 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,12 +11,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 /**
@@ -37,7 +31,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.178:80/" + file);
+                URL url = new URL("http://141.252.208.199:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
