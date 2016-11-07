@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Tabelstructuur voor tabel `leden`
 --
 
-CREATE TABLE `leden` (
+CREATE TABLE `profile` (
   `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE `leden` (
 -- Gegevens worden geëxporteerd voor tabel `leden`
 --
 
-INSERT INTO `leden` (`id`, `name`, `password`, `age`, `kaliber`, `gender`, `firstName`, `lastName`, `email`, `adress`, `city`, `dateOfBirth`, `mobilePhone`, `phone`, `scoreSingle`, `scoreDouble`, `invited`) VALUES
+INSERT INTO `profile` (`id`, `name`, `password`, `age`, `kaliber`, `gender`, `firstName`, `lastName`, `email`, `adress`, `city`, `dateOfBirth`, `mobilePhone`, `phone`, `scoreSingle`, `scoreDouble`, `invited`) VALUES
 (1, '', '', 0, '', '', '', '', '', '', '', '0000-00-00', '', '', 0, 0, 0),
 (2, 'yannick', 'cincla', 20, 'goed', 'male', '', '', '', '', '', '0000-00-00', '', '', 0, 0, 0),
 (3, 'yannick', 'cincla', 20, 'goed', 'male', '', '', '', '', '', '0000-00-00', '', '', 0, 0, 0),
@@ -141,7 +141,7 @@ INSERT INTO `leden` (`id`, `name`, `password`, `age`, `kaliber`, `gender`, `firs
 --
 -- Indexen voor tabel `leden`
 --
-ALTER TABLE `leden`
+ALTER TABLE `profile`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -151,7 +151,7 @@ ALTER TABLE `leden`
 --
 -- AUTO_INCREMENT voor een tabel `leden`
 --
-ALTER TABLE `leden`
+ALTER TABLE `profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
