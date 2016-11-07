@@ -1,6 +1,7 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -99,7 +100,15 @@ public class MatchesToday extends Activity{
                     TextView previousSelectedView = (TextView) gv.getChildAt(previousSelectedPosition);
 
                     //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
-                    int a = matchIDs.get(matches.get(position));
+                    int clickedMatchID = matchIDs.get(matches.get(position));
+
+                    String matchDescription = matches.get(position);
+                    int matchID = clickedMatchID;
+
+                    Intent Popup = new Intent(MatchesToday.this, Popup.class);
+                    Popup.putExtra("matchDescription", matchDescription);
+                    Popup.putExtra("matchID", matchID);
+                    startActivity(Popup);
 
                     // If there is a previous selected view exists
                     if (previousSelectedPosition != -1)

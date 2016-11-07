@@ -105,6 +105,9 @@ public class DbConnection extends AsyncTask<String, String, String>{
                break;
 
             }
+            case "": {
+                break;
+            }
         }
     }
 }
