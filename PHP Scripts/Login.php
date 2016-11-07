@@ -5,7 +5,7 @@ $con=mysqli_connect("localhost","root","","androidtest");
 $name = $_POST["name"];
 $password = $_POST["password"];
  
-$sql = "SELECT * FROM `leden` WHERE `name`='".$name."' AND `password`='".$password."';";
+$sql = "SELECT * FROM `profile` WHERE `name`='".$name."' AND `password`='".$password."';";
  
 $result = mysqli_query($con, $sql);
  

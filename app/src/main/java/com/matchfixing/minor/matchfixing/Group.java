@@ -21,15 +21,20 @@ public class Group extends Activity {
         setContentView(R.layout.groupcontrol);
         groupNameField = (EditText)findViewById(R.id.textCreateGroup);
     }
-    //Hier moet nog ff duidelijk een koppeling komen tusse gebruiker en de groep.
+
     public void group_group(View view) {
         groupName = groupNameField.getText().toString();
 
         if (groupName != null){
             Groups_Object go = new Groups_Object(groupName);
+            String file = "";
+            String inputDb = "";
+            String export = "";
+            DbConnection b = new DbConnection();
+            //b.execute(inputDb, file, export);
         }else{
-            String errorMsg = "Voer een groepsnaam in.";
-            Toast.makeText(ctx, errorMsg, Toast.LENGTH_LONG).show();
+            String msg = "Voer een groepsnaam in.";
+            Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
         }
     }
 }

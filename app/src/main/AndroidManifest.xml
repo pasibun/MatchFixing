@@ -27,6 +27,10 @@
         </activity>
         <activity android:name=".MatchesToday" >
         </activity>
+        <activity android:name=".Profile" >
+        </activity>
+        <activity android:name=".Group">
+        </activity>
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class Register extends Activity {
 
     EditText nameField, passwordField, passwordCheckField, ageField, playerClassField;
-    String name, password, passwordcheck, age, playerClass;
+    String name, password, passwordcheck, age, playerClass, msg;
     Context ctx=this;
 
     @Override
@@ -29,23 +29,27 @@ public class Register extends Activity {
     }
 
     public void register_register(View v){
-
         name = nameField.getText().toString();
         password = passwordField.getText().toString();
         passwordcheck = passwordCheckField.getText().toString();
         age = ageField.getText().toString();
         playerClass = playerClassField.getText().toString();
         if (password.equals(passwordcheck)) {
-            String databaseInput = "username=" + name + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
-            String msg = "Data saved successfully";
-            String file = "connection.php";
-            DbConnection b = new DbConnection();
-            b.execute(databaseInput, file, null);
-            Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+            if(name != null && age != null && playerClass != null) {
+                String databaseInput = "username=" + name + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
+                msg = "Data is goed opgeslagen.";
+                String file = "connection.php";
+                DbConnection b = new DbConnection();
+                b.execute(databaseInput, file, null);
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+            }else{
+                msg = "Voer alle gegevens in aub.";
+                Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
+            }
         }
         else{
-            String text = "Make sure your passwords are equal.";
-            Toast.makeText(ctx, text, Toast.LENGTH_LONG).show();
+            msg = "Uw wachtwoord komt niet overeen.";
+            Toast.makeText(ctx, msg, Toast.LENGTH_LONG).show();
         }
     }
 }
