@@ -12,7 +12,7 @@ $password = $_POST["password"];
 $age =  $_POST["age"];
 $kaliber = $_POST["playerClass"];
 
-$query = "INSERT INTO leden(name, password, age, kaliber) 
+$query = "INSERT INTO profile(name, password, age, kaliber) 
 				  VALUES('$username', '$password', '$age', '$kaliber')";
 
 $result = mysqli_query($con,$query);

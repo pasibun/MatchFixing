@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/textView3"
         android:textColor="#ffffff" />
 
@@ -25,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/textView4"
         android:layout_gravity="center_horizontal"
         android:textColor="#ffffff" />
@@ -34,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
         android:id="@+id/textView5"
         android:textColor="#ffffff"
         android:layout_gravity="right"/>
@@ -46,6 +43,6 @@
         android:verticalSpacing="5dp"
         android:horizontalSpacing="5dp"
         android:id="@+id/gridView"
-        android:background="#6b1a1a"/>
+        android:background="#26843c"/>
 
 </LinearLayout>

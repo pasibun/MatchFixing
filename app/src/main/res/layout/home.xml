@@ -9,7 +9,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -19,12 +19,13 @@
         android:text="@string/profile"
         android:onClick="profile_profile"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hapticFeedbackEnabled="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -35,12 +36,13 @@
         android:onClick="matchmaker_matchmaker"
         android:layout_below="@+id/btnProfile"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hapticFeedbackEnabled="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -51,12 +53,13 @@
         android:onClick="group_group"
         android:layout_below="@+id/btnMatchMaker"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hapticFeedbackEnabled="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -67,12 +70,13 @@
         android:onClick="invites_invites"
         android:layout_below="@+id/btnGroups"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hapticFeedbackEnabled="true" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -83,5 +87,6 @@
         android:onClick="calender_calender"
         android:layout_below="@+id/btnInvites"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hapticFeedbackEnabled="true" />
 </RelativeLayout>

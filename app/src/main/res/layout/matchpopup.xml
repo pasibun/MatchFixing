@@ -2,25 +2,45 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background= "@drawable/border">
 
     <TextView
     android:text="TextView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/textView6" />
+    android:id="@+id/textView6"
+        android:textSize="30sp"
+        android:textColor="@color/colorGray"
+        android:textAlignment="center"
+        android:paddingTop="15dp" />
 
     <TextView
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7" />
+        android:id="@+id/textView7"
+        android:textSize="30sp"
+        android:textColor="@color/colorGray"
+        android:textAlignment="center" />
 
     <Button
-        android:text="Attend match"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/attendMatch"
-        android:elevation="0dp"
-        android:textStyle="normal|bold|italic" />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#00aa55"
+    android:background="#5d5d5d"
+    android:textStyle="bold"
+    android:textSize="20sp"
+    android:padding="5dp"
+    android:id="@+id/attendMatch"
+    android:text="Attend Match"
+    android:hapticFeedbackEnabled="true"
+    android:layout_below="@+id/linearLayout"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="16dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
 </LinearLayout>

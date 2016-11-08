@@ -84,7 +84,7 @@ public class MatchesToday extends Activity{
                     TextView tv = (TextView) view;
                     tv.setTextColor(Color.WHITE);
 
-                    tv.setBackgroundColor(Color.parseColor("#ff0000"));
+                    tv.setBackgroundColor(Color.parseColor("#23db4e"));
                     tv.setTextSize(25);
 
                     return tv;
@@ -134,7 +134,7 @@ public class MatchesToday extends Activity{
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.178:80/GetMatch.php");
+                URL url = new URL("http://141.252.224.165:80/GetMatch.php");
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

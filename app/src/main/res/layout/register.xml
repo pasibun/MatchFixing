@@ -83,20 +83,6 @@
             android:id="@+id/edtuserklasse" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:id="@+id/btnlogin"
-        android:text="Register"
-        android:onClick="register_register"
-        android:layout_below="@+id/linearLayout"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -109,5 +95,23 @@
         android:layout_above="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/button3"
+        android:text="Register"
+        android:onClick="register_register"
+        android:hapticFeedbackEnabled="true"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        tools:text="Register" />
 
 </RelativeLayout>

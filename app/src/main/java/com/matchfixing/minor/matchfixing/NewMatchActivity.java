@@ -94,7 +94,7 @@ public class NewMatchActivity extends AppCompatActivity {
 
     public void ShowDialogOnButtonClick()
     {
-        btn = (Button)findViewById(R.id.button);
+        btn = (Button)findViewById(R.id.dateBtn);
 
         btn.setOnClickListener(
                 new View.OnClickListener()
@@ -110,7 +110,7 @@ public class NewMatchActivity extends AppCompatActivity {
 
     public void ShowTimePickerDialog()
     {
-        button_stpd = (Button)findViewById(R.id.button2);
+        button_stpd = (Button)findViewById(R.id.timeBtn);
 
         button_stpd.setOnClickListener(
                 new View.OnClickListener()
@@ -193,12 +193,12 @@ public class NewMatchActivity extends AppCompatActivity {
                 if (hour_x >= 0 && hour_x < 10)
                 {
                     timeField.setText("Time: " + "0" + hour_x + ":" + minute_x);
-                    timeString = Integer.toString(hour_x) + ":" + "0" + Integer.toString(minute_x) + ":00";
+                    timeString = Integer.toString(hour_x) + "0" + ":" + Integer.toString(minute_x) + ":00";
                 }
                 else
                 {
                     timeField.setText("Time: " + hour_x + ":" + minute_x);
-                    timeString = Integer.toString(hour_x) + ":" + "0" + Integer.toString(minute_x) + ":00";
+                    timeString = Integer.toString(hour_x) + ":" + Integer.toString(minute_x) + ":00";
                 }
             }
         }
