@@ -31,7 +31,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.208.199:80/" + file);
+                URL url = new URL("http://141.252.208.188:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -80,19 +80,22 @@ public class DbConnection extends AsyncTask<String, String, String>{
         switch(export){
             case "Profile":{
                 try {
-                    JSONObject root = new JSONObject(s);
-                    JSONObject user_data = root.getJSONObject("user_data");
-                    name = user_data.getString("name");
-                    Profile.name = name;
-                    password  = user_data.getString("password");
-                    Profile.password = password;
-                    age  = user_data.getString("age");
-                    Profile.age = age;
-                    kaliber = user_data.getString("kaliber");
-                    Profile.kaliber = kaliber;
+                    if(s.length() != 16){
+                        JSONObject root = new JSONObject(s);
+                        JSONObject user_data = root.getJSONObject("user_data");
+                        name = user_data.getString("name");
+                        Profile.name = name;
+                        password  = user_data.getString("password");
+                        Profile.password = password;
+                        age  = user_data.getString("age");
+                        Profile.age = age;
+                        kaliber = user_data.getString("kaliber");
+                        Profile.kaliber = kaliber;
+                       //for (int i = 0; i < user_data.toString(""); i++){}
+                        Users_Object uo = new Users_Object(null, null, null, password, null, null, null, null, name, 0, 0, 0.0, 0.0);
+                        Login.checkLoginInfo(uo);
+                    }else Login.checkLoginInfo(null);
 
-                    Users_Object uo = new Users_Object(null,null,null,password,null,null,null,null,name,0, 0,0.0,0.0);
-                    Login.checkLoginInfo(uo);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
