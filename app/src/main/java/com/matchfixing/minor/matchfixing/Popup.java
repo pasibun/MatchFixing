@@ -3,7 +3,9 @@ package com.matchfixing.minor.matchfixing;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -43,8 +45,8 @@ public class Popup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.85), (int)(height*.6));
-
+        getWindow().setLayout((int)(width*.85), (int)(height*.3));
+        
         attendMatchButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view)
@@ -58,5 +60,4 @@ public class Popup extends Activity {
             }
         });
     }
-
 }
