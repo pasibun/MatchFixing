@@ -26,10 +26,13 @@ public class NewMatchActivity extends AppCompatActivity {
     Button button_stpd;
 
     Spinner matchTypeSpinner;
+    Spinner matchDegreeSpinner;
 
     TextView dateField;
     TextView timeField;
     TextView matchTypeField;
+    TextView matchDegreeField;
+    TextView invitedPersonField;
 
     int year_x, month_x, day_x;
     int hour_x, minute_x;
@@ -43,6 +46,9 @@ public class NewMatchActivity extends AppCompatActivity {
     String matchDate;
     String matchTime;
     String matchType;
+    String matchDegree;
+
+    String invitedPersonName;
 
     Context ctx=this;
     String MATCHDATE = null, MATCHTIME = null, MATCHTYPE = null;
@@ -57,34 +63,66 @@ public class NewMatchActivity extends AppCompatActivity {
         month_x = cal.get(Calendar.MONTH);
         day_x = cal.get(Calendar.DAY_OF_MONTH);
 
+        //invitedPersonField = (TextView) findViewById(R.id.invitedPerson);
+
         ShowDialogOnButtonClick();
         ShowTimePickerDialog();
-        SetSpinner();
+        SetSpinner("Type");
     }
 
-    private void SetSpinner()
+    private void SetSpinner(final String spinner)
     {
         matchTypeSpinner = (Spinner)findViewById(R.id.spinner);
-        matchTypeField = (TextView) findViewById(R.id.matchType);
+        matchDegreeSpinner = (Spinner)findViewById(R.id.spinner2);
 
-        final String[] matchTypes = new String[]{
-                "Single",
-                "Double",
-                "Tournament"
-        };
+        matchTypeField = (TextView) findViewById(R.id.matchType);
+        matchDegreeField = (TextView) findViewById(R.id.matchDegree);
+
+        final String[] matchTypes;
+        final String[] matchDegree;
+
+
+            matchTypes = new String[]{
+                    "Single",
+                    "Double",
+                    "Tournament"
+            };
+            matchDegree = new String[]
+            {
+                   "Friendly",
+                   "Competitive"
+            };
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchTypes);
+        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchDegree);
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_activity);
         matchTypeSpinner.setAdapter(spinnerArrayAdapter);
 
+        spinnerArrayAdapter2.setDropDownViewResource(R.layout.spinner_activity);
+        matchDegreeSpinner.setAdapter(spinnerArrayAdapter2);
+
         matchTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                matchTypeField.setText("Matchtype: " + matchTypes[position]);
-                matchType = matchTypes[position];
-            }
 
+                    matchTypeField.setText("Matchtype: " + matchTypes[position]);
+                    matchType = matchTypes[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        matchDegreeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                matchDegreeField.setText("MatchDegree: " + matchDegree[position]);
+                matchType = matchDegree[position];
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -206,9 +244,11 @@ public class NewMatchActivity extends AppCompatActivity {
 
     public void SetupMatch(View v)
     {
+        invitedPersonName = invitedPersonField.getText().toString();
+
         ParseDate();
         ParseTime();
-        String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType;
+        String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+invitedPersonName;
         String fileName = "newMatch.php";
         DbConnection b = new DbConnection();
         b.execute(databaseInfo, fileName, "NewMatch");
