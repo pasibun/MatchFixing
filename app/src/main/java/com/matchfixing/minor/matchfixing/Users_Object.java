@@ -7,21 +7,20 @@ import java.util.Date;
  */
 
 public class Users_Object {
-    private String fName, lName, email, password, address, city, sex, username;
+    private String fName, lName, email, password, address, city, username, gender, mobilePhone, phone;
     private Date dateOfBirth;
-    private int mobilePhone, phone;
     private double scoreSingle, scoreDouble;
 
     public Users_Object(String fName, String lName, String email, String password, String address,
-                        String city, String sex, Date dateOfBirth, String username, int mobilePhone,
-                        int phone, double scoreSingle, double scoreDouble){
+                        String city, String gender, Date dateOfBirth, String username, String mobilePhone,
+                        String phone, double scoreSingle, double scoreDouble){
         this.fName = fName;
         this.lName = lName;
         this.email = email;
         this.password = password;
         this.address = address;
         this.city = city;
-        this.sex = sex;
+        this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.username = username;
         this.mobilePhone = mobilePhone;
@@ -42,11 +41,11 @@ public class Users_Object {
         return scoreSingle;
     }
 
-    public int getMobilePhone() {
+    public String getMobilePhone() {
         return mobilePhone;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -78,8 +77,8 @@ public class Users_Object {
         return password;
     }
 
-    public String getSex() {
-        return sex;
+    public String getgender() {
+        return gender;
     }
 
     public void setAddress(String address) {
@@ -106,7 +105,7 @@ public class Users_Object {
         this.lName = lName;
     }
 
-    public void setMobilePhone(int mobilePhone) {
+    public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
     }
 
@@ -114,7 +113,7 @@ public class Users_Object {
         this.password = password;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -126,8 +125,8 @@ public class Users_Object {
         this.scoreSingle = scoreSingle;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setgender(String gender) {
+        this.gender = gender;
     }
 
     public void setUsername(String username) {
