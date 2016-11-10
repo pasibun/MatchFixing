@@ -15,7 +15,6 @@ public class Login extends Activity {
 
     EditText name, password;
     static String Name, Password;
-    Context ctx=this;
     private static Context mContext;
     static Map<String, Integer> members;
 
@@ -38,13 +37,13 @@ public class Login extends Activity {
         Name = name.getText().toString();
         Password = password.getText().toString();
         DbConnection b = new DbConnection();
-        String databaseInfo = "name="+Name+"&password="+Password;
+        String databaseInfo = "username="+Name+"&password="+Password;
         String file = "login.php";
         String export = "Profile";
         String errormsg = "Voer uw inloggegevens in.";
         if(!Name.matches("") || !Password.matches("")) {
             b.execute(databaseInfo, file, export);
-        }else Toast.makeText(ctx, errormsg, Toast.LENGTH_SHORT).show();
+        }else Toast.makeText(mContext, errormsg, Toast.LENGTH_SHORT).show();
     }
 
     public static void checkLoginInfo(Users_Object us){
