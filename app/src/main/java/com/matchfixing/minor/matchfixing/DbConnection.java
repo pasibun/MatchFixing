@@ -11,19 +11,13 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by LaptopPasibun on 31-10-2016.
  */
 
 public class DbConnection extends AsyncTask<String, String, String>{
-    private String name = null, password = null, age = null, kaliber = null, gender = null,
-            export, MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE;
-    List<String> matches;
-    Map<String, Integer> matchIDs;
-    private int previousSelectedPosition = -1;
+    private String export;
 
     public String inputDatabase(String inputDb, String file, String export){
         this.export = export;
@@ -57,12 +51,6 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 return "Exception: " + e.getMessage();
             }
         return data;
-       // }
-       // return null;
-//        else {
-//            execute();
-//            return null;
-//        }
     }
 
     @Override
@@ -80,24 +68,25 @@ public class DbConnection extends AsyncTask<String, String, String>{
         switch(export){
             case "Profile":{
                 try {
-                    JSONObject root = new JSONObject(s);
-                    JSONObject user_data = root.getJSONObject("user_data");
-                    name = user_data.getString("name");
-                    Profile.name = name;
-                    password  = user_data.getString("password");
-                    Profile.password = password;
-                    age  = user_data.getString("age");
-                    Profile.age = age;
-                    kaliber = user_data.getString("kaliber");
-                    Profile.kaliber = kaliber;
+                    if(s.length() != 16){
+                        JSONObject root = new JSONObject(s);
+                        JSONObject user_data = root.getJSONObject("user_data");
+                        Users_Object uo = new Users_Object(user_data.getString("firstName"), user_data.getString("lastName"),
+                                user_data.getString("email"), user_data.getString("password"), user_data.getString("address"),
+                                user_data.getString("city"), user_data.getString("gender"), null, user_data.getString("username"),
+                                user_data.getString("mobilePhone"), user_data.getString("phone"), user_data.getDouble("scoreSingle"),
+                                user_data.getDouble("scoreSingle"));
+                       //for (int i = 0; i < user_data.toString(""); i++){}
+                        Login.checkLoginInfo(uo);
+                    }else Login.checkLoginInfo(null);
 
-                    Users_Object uo = new Users_Object(null,null,null,password,null,null,null,null,name,0, 0,0.0,0.0);
-                    Login.checkLoginInfo(uo);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                break;
-
+            }
+            case "Register":{
+                Register.succesfullRegister();
             }
             case "": {
                 break;
