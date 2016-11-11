@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,6 +28,7 @@ public class NewMatchActivity extends AppCompatActivity {
 
     Spinner matchTypeSpinner;
     Spinner matchDegreeSpinner;
+    Spinner privateSpinner;
 
     TextView dateField;
     TextView timeField;
@@ -46,7 +48,8 @@ public class NewMatchActivity extends AppCompatActivity {
     String matchDate;
     String matchTime;
     String matchType;
-    String matchDegree;
+    String matchDegreeString;
+    String matchVisibility;
 
     String invitedPersonName;
 
@@ -74,12 +77,11 @@ public class NewMatchActivity extends AppCompatActivity {
     {
         matchTypeSpinner = (Spinner)findViewById(R.id.spinner);
         matchDegreeSpinner = (Spinner)findViewById(R.id.spinner2);
-
-        matchTypeField = (TextView) findViewById(R.id.matchType);
-        matchDegreeField = (TextView) findViewById(R.id.matchDegree);
+        privateSpinner = (Spinner) findViewById(R.id.spinner3);
 
         final String[] matchTypes;
         final String[] matchDegree;
+        final String[] privateMatch;
 
 
             matchTypes = new String[]{
@@ -93,8 +95,15 @@ public class NewMatchActivity extends AppCompatActivity {
                    "Competitive"
             };
 
+            privateMatch = new String[]
+            {
+                  "Private",
+                  "Public"
+            };
+
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchTypes);
         ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchDegree);
+        ArrayAdapter<String> spinnerArrayAdapter3 = new ArrayAdapter<String>(this, R.layout.spinner_activity,privateMatch);
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_activity);
         matchTypeSpinner.setAdapter(spinnerArrayAdapter);
@@ -102,11 +111,13 @@ public class NewMatchActivity extends AppCompatActivity {
         spinnerArrayAdapter2.setDropDownViewResource(R.layout.spinner_activity);
         matchDegreeSpinner.setAdapter(spinnerArrayAdapter2);
 
+        spinnerArrayAdapter3.setDropDownViewResource(R.layout.spinner_activity);
+        privateSpinner.setAdapter(spinnerArrayAdapter3);
+
         matchTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    matchTypeField.setText("Matchtype: " + matchTypes[position]);
                     matchType = matchTypes[position];
             }
             @Override
@@ -120,8 +131,19 @@ public class NewMatchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                matchDegreeField.setText("MatchDegree: " + matchDegree[position]);
-                matchType = matchDegree[position];
+                matchDegreeString = matchDegree[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        privateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                matchVisibility = privateMatch[position];
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -244,14 +266,38 @@ public class NewMatchActivity extends AppCompatActivity {
 
     public void SetupMatch(View v)
     {
-        invitedPersonName = invitedPersonField.getText().toString();
+        Intent matchDetails = new Intent(NewMatchActivity.this, NewMatchDetails.class);
+        Intent invitePeople = new Intent(NewMatchActivity.this, InvitePeople.class);
 
         ParseDate();
         ParseTime();
-        String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+invitedPersonName;
-        String fileName = "newMatch.php";
-        DbConnection b = new DbConnection();
-        b.execute(databaseInfo, fileName, "NewMatch");
+
+        if(matchVisibility.equals("Public"))
+        {
+            StartIntent(matchDetails);
+        }
+        else
+        {
+            StartIntent(invitePeople);
+        }
+
+//        invitedPersonName = invitedPersonField.getText().toString();
+//
+//        ParseDate();
+//        ParseTime();
+//        String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+invitedPersonName;
+//        String fileName = "newMatch.php";
+//        DbConnection b = new DbConnection();
+//        b.execute(databaseInfo, fileName, "NewMatch");
+    }
+    private void StartIntent(Intent i)
+    {
+        i.putExtra("MATCH_TYPE", matchType);
+        i.putExtra("MATCH_DEGREE", matchDegreeString);
+        i.putExtra("DATE", matchDate);
+        i.putExtra("TIME", matchTime);
+
+        startActivity(i);
     }
 
     private void ParseTime()

@@ -36,6 +36,12 @@
         </activity>
         <activity android:name=".Invitation">
         </activity>
+        <activity android:name=".NewMatchDetails"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+        <activity android:name=".InvitePeople">
+        </activity>
     </application>
 
 </manifest>

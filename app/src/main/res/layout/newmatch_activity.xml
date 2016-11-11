@@ -15,32 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Match Degree:"
-        android:id="@+id/matchDegree"
-        android:layout_below="@+id/matchType"
-        android:layout_centerHorizontal="true"
-        android:background="#00ffffff"
-        android:textColor="#ffffff"
-        android:textStyle="normal|bold"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/DateTextField"
-        android:layout_below="@+id/timeBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="Date: "
-        android:textColor="#ffffff"
-        android:hapticFeedbackEnabled="false"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/TimeTextField"
         android:layout_marginTop="5dp"
         android:layout_below="@+id/DateTextField"
@@ -61,23 +35,6 @@
         android:textColor="#ffffff"
         android:textStyle="normal|bold"
         android:layout_marginTop="7.5dp" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#00aa55"
-        android:background="#5d5d5d"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:id="@+id/dateBtn"
-        android:text="Pick Date"
-        android:onClick="SetupMatch (NewMatchActivity)"
-        android:elevation="0dp"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="85dp" />
 
     <Button
         android:layout_width="match_parent"
@@ -112,19 +69,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:hapticFeedbackEnabled="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Match degree:"
-        android:id="@+id/textView"
-        android:textColor="#ffffff"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="false"
-        android:layout_marginTop="25dp" />
 
     <Spinner
         android:layout_width="150dp"
@@ -164,15 +108,74 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Match type:"
-        android:id="@+id/matchType"
-        android:background="#00ffffff"
+        android:text="Private/Public:"
+        android:id="@+id/textView16"
         android:textColor="#ffffff"
         android:textStyle="normal|bold"
-        android:layout_below="@+id/TimeTextField"
-        android:layout_toRightOf="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9"
-        android:layout_marginTop="5dp" />
+        android:layout_below="@+id/spinner2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:id="@+id/spinner3"
+        android:dropDownSelector="#b0ff0101"
+        android:dropDownWidth="150dp"
+        android:background="#19ffffff"
+        android:popupBackground="#000000"
+        android:textAlignment="center"
+        android:touchscreenBlocksFocus="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/textView16"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/dateBtn"
+        android:text="Pick Date"
+        android:onClick="SetupMatch (NewMatchActivity)"
+        android:elevation="0dp"
+        android:layout_below="@+id/spinner3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Match degree:"
+        android:id="@+id/textView"
+        android:textColor="#ffffff"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/DateTextField"
+        android:text="Date: "
+        android:textColor="#ffffff"
+        android:hapticFeedbackEnabled="false"
+        android:textStyle="bold"
+        android:layout_below="@+id/timeBtn"
+        android:layout_alignRight="@+id/TimeTextField"
+        android:layout_alignEnd="@+id/TimeTextField"
+        android:layout_marginTop="25dp" />
 
 
 </RelativeLayout>
