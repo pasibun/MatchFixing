@@ -10,9 +10,15 @@ if (mysqli_connect_errno($con))
 $date =  $_POST["matchDate"];
 $time = $_POST["matchTime"];
 $matchType =  $_POST["matchType"];
+$userID = 123;
+$groupID = 123;
+$matchDegree = $_POST["MatchDegree"];
+$playerRankMin = $_POST["playerRankMin"];
+$playerRankMax = $_POST["playerRankMax"];
+$description = $_POST["Description"];
 
-$query = "INSERT INTO matches(matchDate, matchTime, MatchType) 
-				  VALUES('$date', '$time', '$matchType')";
+$query = "INSERT INTO matches(matchDate, matchTime, MatchType, GroupID, UserID, MatchDegree, playerRankMin, playerRankMax, Description) 
+				  VALUES('$date', '$time', '$matchType', '$groupID', '$userID', '$matchDegree', '$playerRankMin', '$playerRankMax', '$description')";
 
 $result = mysqli_query($con,$query);
 
