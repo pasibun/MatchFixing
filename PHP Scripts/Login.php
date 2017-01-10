@@ -7,7 +7,7 @@ $password = $_POST["password"];
  
 $sql = "SELECT * FROM `profile` WHERE `username`='".$name."' AND `password`='".$password."';";
  
-$countmembers = mysqli_query($con, "SELECT COUNT(ùsername) FROM 'profile'");
+$countmembers = mysqli_query($con, "SELECT COUNT(username) FROM 'profile'");
  
 $result = mysqli_query($con, $sql);
  
