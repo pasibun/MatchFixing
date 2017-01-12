@@ -38,7 +38,7 @@ public class Login extends Activity {
         Password = password.getText().toString();
         DbConnection b = new DbConnection();
         String databaseInfo = "username="+Name+"&password="+Password;
-        String file = "login.php";
+        String file = "Login.php";
         String export = "Profile";
         String errormsg = "Voer uw inloggegevens in.";
         if(!Name.matches("") || !Password.matches("")) {
