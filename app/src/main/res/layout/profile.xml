@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Naam: Matthijs Hovestad"
+        android:text="Gebruikersnaam:"
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"
@@ -42,12 +42,26 @@
         android:layout_above="@+id/name"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:id="@+id/username_field"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Naam:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/gender_fields"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:id="@+id/name_field"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:text="Geboortedatum: 16-08-1990"
+        android:text="Sexe:"
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"
@@ -56,12 +70,12 @@
         android:layout_above="@+id/password"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/password_field"/>
+        android:id="@+id/gender_field"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:text="Adres: Piet Heinstraat 71"
+        android:text="Geboortedatum: "
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"
@@ -70,54 +84,13 @@
         android:layout_above="@+id/age"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/age_field"/>
+        android:id="@+id/birthdate_field"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:text="Postcode: 8023VD"
-        android:typeface="sans"
-        android:textSize="15sp"
-        android:textColor="#00aa55"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_above="@+id/kaliber"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/kaliber_field"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:text="Woonplaats: Zwolle"
-        android:typeface="sans"
-        android:textSize="15sp"
-        android:textColor="#00aa55"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_above="@+id/kaliber_field"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/tijdelijk1"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:text="Mobiele nummer: 0627073398"
-        android:typeface="sans"
-        android:textSize="15sp"
-        android:textColor="#00aa55"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_above="@+id/tijdelijk1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/tijdelijk2"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:text="Speelsterkte enkel: 9"
+        android:text="E-Mail:"
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"
@@ -126,12 +99,28 @@
         android:layout_above="@+id/tijdelijk2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/tijdelijk3"/>
+        android:id="@+id/email_field" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:text="Speelsterkte doubel: 8"
+        android:text="Adress:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/tijdelijk2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/adress_field"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Woonplaats"
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"
@@ -140,5 +129,65 @@
         android:layout_above="@+id/tijdelijk3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/tijdelijk4"/>
+        android:id="@+id/city_field"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Telefoon:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/tijdelijk3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/phone_field" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Mobiel:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/tijdelijk2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/mobilephone_field" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Score enkel:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/tijdelijk1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/singlescore_field" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:text="Score dubbel:"
+        android:typeface="sans"
+        android:textSize="15sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_above="@+id/kaliber_field"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/doublescore_field" />
 </LinearLayout>

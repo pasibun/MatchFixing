@@ -7,17 +7,17 @@ import java.util.Date;
  */
 
 public class Users_Object {
-    private String fName, lName, email, password, address, city, username, gender, mobilePhone, phone;
-    private Date dateOfBirth;
+    public  String userID, fName, lName, email, password, address, city, username, gender, mobilePhone, phone;
+    private String dateOfBirth;
     private double scoreSingle, scoreDouble;
 
-    public Users_Object(String fName, String lName, String email, String password, String address,
-                        String city, String gender, Date dateOfBirth, String username, String mobilePhone,
+    public Users_Object(String userID, String password, String fName, String email, String address,
+                        String city, String gender, String dateOfBirth, String username, String mobilePhone,
                         String phone, double scoreSingle, double scoreDouble){
-        this.fName = fName;
-        this.lName = lName;
-        this.email = email;
+        this.userID = userID;
         this.password = password;
+        this.fName = fName;
+        this.email = email;
         this.address = address;
         this.city = city;
         this.gender = gender;
@@ -29,7 +29,9 @@ public class Users_Object {
         this.scoreDouble = scoreDouble;
     }
 
-    public Date getDateOfBirth() {
+    public String GetUserID() { return userID; }
+
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
@@ -89,7 +91,7 @@ public class Users_Object {
         this.city = city;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
