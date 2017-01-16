@@ -26,7 +26,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.200:80/" + file);
+                URL url = new URL("http://141.252.224.166:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -107,6 +107,10 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 Popup p = new Popup();
                 if(s != "")
                     p.CheckForMatchToUpdate(s);
+            }
+            case "GetLanes":{
+                if(s != "")
+                    NewMatchActivity.GetLanes(s);
             }
             case "": {
                 break;

@@ -81,4 +81,35 @@
         android:layout_above="@+id/editText"
         android:layout_alignLeft="@+id/editText"
         android:layout_alignStart="@+id/editText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Selecteer baan:"
+        android:id="@+id/textView16"
+        android:textColor="#ffffff"
+        android:textStyle="normal|bold"
+        android:paddingLeft="5dp"
+        android:layout_above="@+id/textView17"
+        android:layout_alignLeft="@+id/textView17"
+        android:layout_alignStart="@+id/textView17"
+        android:layout_marginBottom="40dp" />
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:id="@+id/spinner"
+        android:dropDownSelector="#b0ff0101"
+        android:dropDownWidth="150dp"
+        android:background="#19ffffff"
+        android:popupBackground="#000000"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown"
+        android:touchscreenBlocksFocus="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/textView16"
+        android:layout_toRightOf="@+id/textView17"
+        android:layout_toEndOf="@+id/textView17" />
 </RelativeLayout>

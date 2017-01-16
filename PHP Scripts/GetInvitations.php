@@ -11,7 +11,7 @@ $response = array();
 
 while($row = mysqli_fetch_assoc($result)){
    
-	    $response = array("MatchID"=>$row['MatchID'],"matchDate"=>$row['matchDate'],"matchTime"=>$row['matchTime'],"MatchType"=>$row['MatchType']);
+	    $response = array("MatchID"=>$row['MatchID'],"matchDate"=>$row['matchDate'],"matchTime"=>$row['matchTime'],"MatchType"=>$row['MatchType'],"lane"=>$row['lane']);
 
 	
 		echo json_encode(array("user_data"=>$response )) . "&";

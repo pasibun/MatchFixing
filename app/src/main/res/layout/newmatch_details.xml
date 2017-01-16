@@ -88,15 +88,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Match description:"
-        android:id="@+id/textView10"
+        android:text="Selecteer baan:"
+        android:id="@+id/textView15"
         android:textColor="#ffffff"
         android:textStyle="normal|bold"
         android:paddingLeft="5dp"
         android:layout_below="@+id/seekBar"
         android:layout_alignLeft="@+id/textView11"
         android:layout_alignStart="@+id/textView11"
-        android:layout_marginTop="19dp" />
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Westrijd beschrijving"
+        android:id="@+id/textView10"
+        android:textColor="#ffffff"
+        android:textStyle="normal|bold"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/textView15"
+        android:layout_alignLeft="@+id/textView11"
+        android:layout_alignStart="@+id/textView11"
+        android:layout_marginTop="100dp" />
+
+
 
     <EditText
         android:layout_width="match_parent"
@@ -133,5 +149,22 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp" />
+
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:id="@+id/spinner"
+        android:dropDownSelector="#b0ff0101"
+        android:dropDownWidth="150dp"
+        android:background="#19ffffff"
+        android:popupBackground="#000000"
+        android:textAlignment="center"
+        android:spinnerMode="dropdown"
+        android:touchscreenBlocksFocus="false"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/textView15"
+        android:layout_toRightOf="@+id/textView14"
+        android:layout_toEndOf="@+id/textView14" />
 
 </RelativeLayout>

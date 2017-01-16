@@ -30,13 +30,9 @@ import java.util.Map;
  */
 public class MatchesToday extends Activity{
     String day, month, year;
-    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE;
+    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE;
 
     TextView txtView;
-
-    // public TextView dateText;
-    //TextView timeText;
-    //TextView typeText;
 
     List<String> matches;
     Map<String, Integer> matchIDs;
@@ -54,9 +50,6 @@ public class MatchesToday extends Activity{
         matchIDs = new HashMap<String, Integer>();
 
         txtView = (TextView) findViewById(R.id.textView2);
-        // dateText = (TextView) findViewById(R.id.textView3);
-        //  timeText = (TextView) findViewById(R.id.textView4);
-        // typeText = (TextView) findViewById(R.id.textView5);
 
         matchGrid = (GridView) findViewById(R.id.gridView);
 
@@ -134,7 +127,7 @@ public class MatchesToday extends Activity{
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.161:80/GetMatch.php");
+                URL url = new URL("http://141.252.224.166:80/GetMatch.php");
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -176,9 +169,10 @@ public class MatchesToday extends Activity{
                     MATCHDATE = user_data.getString("matchDate");
                     MATCHTIME = user_data.getString("matchTime");
                     MATCHTYPE = user_data.getString("MatchType");
+                    MATCHLANE = user_data.getString("lane");
 
-                    matches.add(MATCHTIME + " " + MATCHTYPE);
-                    matchIDs.put(MATCHTIME + " " + MATCHTYPE, Integer.parseInt(MATCHID));
+                    matches.add(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE);
+                    matchIDs.put(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE, Integer.parseInt(MATCHID));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

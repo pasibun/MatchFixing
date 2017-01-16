@@ -1,14 +1,27 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by jylti on 10-11-2016.
@@ -29,20 +42,32 @@ public class NewMatchDetails extends Activity {
     String matchDegree;
     String matchTime;
     String matchDate;
+    String hourBefore;
+    String hourAfter;
 
     String playerMin;
     String playerMax;
 
     String matchDescription;
+    Spinner laneSpinner;
+    String lane;
+    static List<String> occupiedLanes;
+    static String LANE;
+
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newmatch_details);
 
+        mContext = this;
+
         SetupSeekBars();
         SetupBtn();
         GetIntentValues();
+
+        SetSpinner("Type");
     }
 
     public void SetupMatches()
@@ -50,7 +75,7 @@ public class NewMatchDetails extends Activity {
         matchDescription = description.getText().toString();
 
         String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+"0"+
-                "&GroupID="+"0"+"&MatchDegree="+matchDegree+"&playerRankMin="+playerMin+"&playerRankMax="+playerMax+"&Description="+matchDescription;
+                "&GroupID="+"0"+"&MatchDegree="+matchDegree+"&playerRankMin="+playerMin+"&playerRankMax="+playerMax+"&Description="+matchDescription+"&lane="+lane;
         String fileName = "newMatch.php";
         DbConnection b = new DbConnection();
         b.execute(databaseInfo, fileName, "NewMatch");
@@ -64,7 +89,13 @@ public class NewMatchDetails extends Activity {
         setupMatchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SetupMatches();
+                if(!lane.equals("Bezet"))
+                    SetupMatches();
+                else
+                {
+                    String errormsg = "Deze baan is al gereserveerd voor de door u opgegeven tijd, kies een andere baan.";
+                    Toast.makeText(mContext, errormsg, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -75,6 +106,8 @@ public class NewMatchDetails extends Activity {
         matchDegree = getIntent().getStringExtra("MATCH_DEGREE");
         matchDate = getIntent().getStringExtra("DATE");
         matchTime = getIntent().getStringExtra("TIME");
+        hourBefore = getIntent().getStringExtra("HOUR_BEFORE");
+        hourAfter = getIntent().getStringExtra("HOUR_AFTER");
     }
 
     public void SetupSeekBars()
@@ -135,5 +168,43 @@ public class NewMatchDetails extends Activity {
         });
     }
 
+    private void SetSpinner(final String spinner) {
+        laneSpinner = (Spinner) findViewById(R.id.spinner);
+        occupiedLanes = NewMatchActivity.occupiedLanes;
+        final String[] lanes;
+        final String[] lanesLeft;
+
+        lanes = new String[]{
+                "1","2","3","4","5","6","7","8","9","10"
+        };
+
+        List<String> lanesList = new LinkedList<String>(Arrays.asList(lanes));
+        for(int i = 0; i < occupiedLanes.size(); ++i){
+            for(int j = 0; j < lanesList.size(); ++j){
+                if(occupiedLanes.get(i).equals(lanes[j])){
+                    lanesList.set(j,"Bezet");
+                }
+            }
+        }
+
+        lanesLeft = lanesList.toArray(lanes);
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_activity,lanesLeft);
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_activity);
+        laneSpinner.setAdapter(spinnerArrayAdapter);
+
+        laneSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                lane = lanesLeft[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
 
 }
