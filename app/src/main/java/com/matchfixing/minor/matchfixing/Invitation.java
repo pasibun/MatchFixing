@@ -55,7 +55,6 @@ public class Invitation extends Activity {
 
         matchGrid = (GridView) findViewById(R.id.gridView);
 
-//        txtView.setText("Mijn uitnodigingen");
         SetupView();
 
         String databaseInfo = "userID="+userID;
@@ -63,30 +62,6 @@ public class Invitation extends Activity {
         Invitation.BackGround b = new Invitation.BackGround();
 
         b.execute("123");
-
-        //FindMatchByInvitation();
-    }
-
-    public void FindMatchByInvitation()
-    {
-        userID = 123;
-
-        matches = new ArrayList<String>();
-        matchIDs = new HashMap<String, Integer>();
-
-        s = Integer.toString(userID);
-
-        txtView = (TextView) findViewById(R.id.textView2);
-
-        matchGrid = (GridView) findViewById(R.id.gridView);
-
-        //SetupView();
-
-        String databaseInfo = "userID="+userID;
-        Invitation.BackGround b = new Invitation.BackGround();
-
-        b.execute(s);
-
     }
 
     public void SetupView()

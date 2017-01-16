@@ -80,8 +80,6 @@ public class NewMatchActivity extends AppCompatActivity {
         month_x = cal.get(Calendar.MONTH);
         day_x = cal.get(Calendar.DAY_OF_MONTH);
 
-        //invitedPersonField = (TextView) findViewById(R.id.invitedPerson);
-
         ShowDialogOnButtonClick();
         ShowTimePickerDialog();
         SetSpinner("Type");
@@ -319,7 +317,6 @@ public class NewMatchActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        //SetSpinner("Type");
     }
 
     public void SetupMatch(View v)
@@ -348,6 +345,7 @@ public class NewMatchActivity extends AppCompatActivity {
         i.putExtra("HOUR_BEFORE", matchTimeBefore);
         i.putExtra("HOUR_AFTER", matchTimeAfter);
         NewMatchDetails.occupiedLanes = occupiedLanes;
+        InvitePeople.occupiedLanes = occupiedLanes;
 
         startActivity(i);
     }

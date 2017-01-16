@@ -52,7 +52,6 @@ public class NewMatchDetails extends Activity {
     Spinner laneSpinner;
     String lane;
     static List<String> occupiedLanes;
-    static String LANE;
 
     private Context mContext;
 
