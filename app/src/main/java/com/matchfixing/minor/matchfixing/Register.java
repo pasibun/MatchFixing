@@ -13,8 +13,9 @@ import android.widget.Toast;
  */
 public class Register extends Activity {
 
-    EditText nameField, passwordField, passwordCheckField, ageField, playerClassField;
-    String name, password, passwordcheck, age, playerClass;
+    EditText userNameField, nameField,  passwordField, passwordCheckField, ageField, genderField, mailField,
+             adressField, cityField, phoneField, mobileField, singleScoreField, doubleScoreField;
+    String userName, name, password, passwordcheck, birthDate, playerGender, email, adress, city, phone, mobile, singleScore, doubleScore;
     private static String msg;
     private static Context ctx;
 
@@ -23,23 +24,44 @@ public class Register extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
-        nameField = (EditText)findViewById(R.id.edtuserid);
+        userNameField = (EditText)findViewById(R.id.edtuserid);
+        nameField = (EditText)findViewById(R.id.edtfullname);
         passwordField = (EditText)findViewById(R.id.edtpass);
         passwordCheckField = (EditText)findViewById(R.id.edtpasscheck);
-        ageField = (EditText)findViewById(R.id.edtuserage);
-        playerClassField = (EditText)findViewById(R.id.edtuserklasse);
+        ageField = (EditText)findViewById(R.id.edtuserbirthdate);
+        genderField = (EditText)findViewById(R.id.edtusergender);
+        mailField = (EditText)findViewById(R.id.edtUserMail);
+        adressField = (EditText)findViewById(R.id.edtUserAdress);
+        cityField = (EditText)findViewById(R.id.edtUserCity);
+        phoneField = (EditText)findViewById(R.id.edtUserPhone);
+        mobileField = (EditText)findViewById(R.id.edtUserMobile);
+        singleScoreField = (EditText)findViewById(R.id.edtUserSingle);
+        doubleScoreField = (EditText)findViewById(R.id.edtUserDouble);
+
         ctx = this;
     }
 
     public void register_register(View v){
+        userName = userNameField.getText().toString();
         name = nameField.getText().toString();
         password = passwordField.getText().toString();
         passwordcheck = passwordCheckField.getText().toString();
-        age = ageField.getText().toString();
-        playerClass = playerClassField.getText().toString();
+        birthDate = ageField.getText().toString();
+        playerGender = genderField.getText().toString();
+        email = mailField.getText().toString();
+        adress = adressField.getText().toString();
+        city = cityField.getText().toString();
+        phone = phoneField.getText().toString();
+        mobile = mobileField.getText().toString();
+        singleScore = singleScoreField.getText().toString();
+        doubleScore = doubleScoreField.getText().toString();
+
         if (password.equals(passwordcheck)) {
-            if(name != null && age != null && playerClass != null) {
-                String databaseInput = "username=" + name + "&password=" + password + "&age=" + age + "&playerClass=" + playerClass;
+            if(userName != null && birthDate != null && playerGender != null) {
+                String databaseInput = "username=" + userName + "&name=" + name + "&password=" + password + "&birthDate=" + birthDate + "&playerGender=" + playerGender
+                        + "&email=" + email + "&adress=" + adress + "&city=" + city + "&phone=" + phone + "&mobile=" + mobile
+                        + "&singleScore=" + singleScore + "&doubleScore=" + doubleScore;
+
                 String file = "connection.php";
                 String export = "Register";
                 DbConnection b = new DbConnection();

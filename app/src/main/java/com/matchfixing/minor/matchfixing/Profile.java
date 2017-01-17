@@ -8,29 +8,71 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Profile extends Activity {
 
-    static String name, password, age, kaliber, info;
-    private TextView nameTV, ageTV, passwordTV, kaliberTV;
+    static String userID;
+    String name, username, birthDate, gender, email, address, city, phone, mobile;
+    double singleScore, doubleScore;
+    public static TextView nameTV,userNameTV, dateOfBirthTV, genderTV, emailTV, adressTV, cityTV, phoneTV, mobileTV, singleScoreTV, doubleScoreTV;
+    public static Bundle instances;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
-//
-//        nameTV = (TextView) findViewById(R.id.name_field);
-//        ageTV = (TextView) findViewById(R.id.password_field);
-//        passwordTV = (TextView) findViewById(R.id.age_field);
-//        kaliberTV = (TextView) findViewById(R.id.kaliber_field);
-//
-//        name = getIntent().getStringExtra("name");
-//        password = getIntent().getStringExtra("password");
-//        age = getIntent().getStringExtra("age");
-//        kaliber = getIntent().getStringExtra("kaliber");
-//
-//        nameTV.setText("Welcome " + name);
-//        passwordTV.setText("Your password is " + password);
-//        ageTV.setText("Your age is " + age);
-//        kaliberTV.setText("Kaliber: " + kaliber);
+        this.instances = savedInstanceState;
+
+        userID = PersonaliaSingleton.getInstance().getUserID();
+        InitializeLabels();
+        SetUserInfo();
+    }
+
+    public void InitializeLabels()
+    {
+        nameTV = (TextView) findViewById(R.id.name_field);
+        userNameTV = (TextView) findViewById(R.id.username_field);
+        dateOfBirthTV = (TextView) findViewById(R.id.birthdate_field);
+        genderTV = (TextView) findViewById(R.id.gender_field);
+        emailTV = (TextView) findViewById(R.id.email_field);
+        adressTV = (TextView) findViewById(R.id.adress_field);
+        cityTV = (TextView) findViewById(R.id.city_field);
+        phoneTV = (TextView) findViewById(R.id.phone_field);
+        mobileTV = (TextView) findViewById(R.id.mobilephone_field);
+        singleScoreTV = (TextView) findViewById(R.id.singlescore_field);
+        doubleScoreTV = (TextView) findViewById(R.id.doublescore_field);
+    }
+
+    private void SetLabels()
+    {
+        nameTV.setText(nameTV.getText() + " " +  name);
+        userNameTV.setText(userNameTV.getText() + " " +  username);
+        dateOfBirthTV.setText(dateOfBirthTV.getText() + ": " +  birthDate);
+        genderTV.setText(genderTV.getText() + " " +  gender);
+        emailTV.setText(emailTV.getText() + " " +  email);
+        adressTV.setText(adressTV.getText() + " " +  address);
+        cityTV.setText(cityTV.getText() + " " +  city);
+        phoneTV.setText(phoneTV.getText() + " " +  phone);
+        mobileTV.setText(mobileTV.getText() + " " +  mobile);
+        singleScoreTV.setText(singleScoreTV.getText() + " " +  Double.toString(singleScore));
+        doubleScoreTV.setText(doubleScoreTV.getText() + " " +  Double.toString(doubleScore));
+    }
+
+    public void SetUserInfo()
+    {
+        name = PersonaliaSingleton.getInstance().GetName();
+        email = PersonaliaSingleton.getInstance().GetEmail();
+        address = PersonaliaSingleton.getInstance().GetAddress();
+        city = PersonaliaSingleton.getInstance().GetCity();
+        gender = PersonaliaSingleton.getInstance().GetGender();
+        birthDate = PersonaliaSingleton.getInstance().GetBirth();
+        username = PersonaliaSingleton.getInstance().GetUsername();
+        mobile = PersonaliaSingleton.getInstance().GetMobile();
+        phone = PersonaliaSingleton.getInstance().GetPhone();
+        singleScore = PersonaliaSingleton.getInstance().GetSingle();
+        doubleScore = PersonaliaSingleton.getInstance().GetDouble();
+        SetLabels();
     }
 }

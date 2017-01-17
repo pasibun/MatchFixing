@@ -11,7 +11,7 @@ $MatchID =  $_POST["MatchID"];
 $MatchOwner = $_POST["MatchOwner"];
 $UserID2 =  $_POST["UserID2"];
 
-$query = "INSERT INTO acceptedmatches(MatchID, UserID1, UserID2) 
+$query = "INSERT INTO acceptedmatches(MatchID, MatchOwner, UserID2) 
 				  VALUES('$MatchID', '$MatchOwner', '$UserID2')";
 
 $result = mysqli_query($con,$query);

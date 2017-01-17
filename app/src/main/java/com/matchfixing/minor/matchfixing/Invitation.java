@@ -26,12 +26,13 @@ import java.util.List;
 import java.util.Map;
 
 public class Invitation extends Activity {
-    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE;
+    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE;
 
     int userID;
+    String s;
 
-    List<String> matches;
-    Map<String, Integer> matchIDs;
+    List<String> matches = null;
+    Map<String, Integer> matchIDs = null;
 
     GridView matchGrid;
 
@@ -43,26 +44,24 @@ public class Invitation extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matches_today);
 
-        FindMatchByInvitation();
-        SetupView();
-    }
-
-    public void FindMatchByInvitation()
-    {
         userID = 123;
 
         matches = new ArrayList<String>();
         matchIDs = new HashMap<String, Integer>();
 
+        s = Integer.toString(userID);
+
         txtView = (TextView) findViewById(R.id.textView2);
 
         matchGrid = (GridView) findViewById(R.id.gridView);
 
+        SetupView();
+
         String databaseInfo = "userID="+userID;
         String fileName = "GetInvitations.php";
         Invitation.BackGround b = new Invitation.BackGround();
-        b.execute(Integer.toString(userID));
 
+        b.execute("123");
     }
 
     public void SetupView()
@@ -89,10 +88,11 @@ public class Invitation extends Activity {
                 tv.setTextColor(Color.RED);
 
                 TextView previousSelectedView = (TextView) gv.getChildAt(previousSelectedPosition);
-
-                //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
-                int clickedMatchID = matchIDs.get(matches.get(position));
-
+                int clickedMatchID = -1;
+                //with thclickedMatchIDis method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
+                if(matchIDs != null) {
+                    clickedMatchID = matchIDs.get(matches.get(position));
+                }
                 String matchDescription = matches.get(position);
                 int matchID = clickedMatchID;
 
@@ -123,7 +123,7 @@ public class Invitation extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.161:80/GetInvitations.php");
+                URL url = new URL("http://141.252.224.166:80/GetInvitations.php");
                 String urlParams = "userID=" + userID;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -165,9 +165,10 @@ public class Invitation extends Activity {
                     MATCHDATE = user_data.getString("matchDate");
                     MATCHTIME = user_data.getString("matchTime");
                     MATCHTYPE = user_data.getString("MatchType");
+                    MATCHLANE = user_data.getString("lane");
 
-                    matches.add(MATCHDATE + " " + MATCHTIME + " " + MATCHTYPE);
-                    matchIDs.put(MATCHTIME + " " + MATCHTYPE, Integer.parseInt(MATCHID));
+                    matches.add(MATCHDATE + " " + MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE);
+                    matchIDs.put(MATCHDATE + " " + MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE, Integer.parseInt(MATCHID));
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.os.AsyncTask;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +26,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.161:80/" + file);
+                URL url = new URL("http://141.252.224.166:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -71,11 +72,20 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     if(s.length() != 16){
                         JSONObject root = new JSONObject(s);
                         JSONObject user_data = root.getJSONObject("user_data");
-                        Users_Object uo = new Users_Object(user_data.getString("firstName"), user_data.getString("lastName"),
-                                user_data.getString("email"), user_data.getString("password"), user_data.getString("address"),
-                                user_data.getString("city"), user_data.getString("gender"), null, user_data.getString("username"),
-                                user_data.getString("mobilePhone"), user_data.getString("phone"), user_data.getDouble("scoreSingle"),
-                                user_data.getDouble("scoreSingle"));
+                        Users_Object uo = new Users_Object(
+                                user_data.getString("id"),
+                                user_data.getString("password"),
+                                user_data.getString("firstName"),
+                                user_data.getString("email"),
+                                user_data.getString("address"),
+                                user_data.getString("city"),
+                                user_data.getString("gender"),
+                                user_data.getString("dateOfBirth"),
+                                user_data.getString("username"),
+                                user_data.getString("mobilePhone"),
+                                user_data.getString("phone"),
+                                user_data.getDouble("scoreSingle"),
+                                user_data.getDouble("scoreDouble"));
                        //for (int i = 0; i < user_data.toString(""); i++){}
                         Login.checkLoginInfo(uo);
                     }else Login.checkLoginInfo(null);
@@ -87,6 +97,20 @@ public class DbConnection extends AsyncTask<String, String, String>{
             }
             case "Register":{
                 Register.succesfullRegister();
+            }
+            case "GetMatch":{
+                Popup p = new Popup();
+                if(s != "")
+                    p.CheckMatch(s);
+            }
+            case "GetMatchByID":{
+                Popup p = new Popup();
+                if(s != "")
+                    p.CheckForMatchToUpdate(s);
+            }
+            case "GetLanes":{
+                if(s != "")
+                    NewMatchActivity.GetLanes(s);
             }
             case "": {
                 break;
