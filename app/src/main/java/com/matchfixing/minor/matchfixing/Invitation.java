@@ -123,11 +123,8 @@ public class Invitation extends Activity {
             int tmp;
 
             try {
-<<<<<<< HEAD
                 URL url = new URL("http://141.252.224.166:80/GetInvitations.php");
-=======
-                URL url = new URL("http://141.252.208.185:80/GetInvitations.php");
->>>>>>> groups
+
                 String urlParams = "userID=" + userID;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

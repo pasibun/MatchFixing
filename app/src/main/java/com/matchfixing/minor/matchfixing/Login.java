@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -53,7 +51,6 @@ public class Login extends Activity{
         String errormsg = "Uw inloggegevens komt niet overeen.";
         if (us != null){
             if(us.getPassword().matches(Password) && us.getUsername().matches(Name)) {
-<<<<<<< HEAD
                 PersonaliaSingleton.getInstance().setUserID(us.GetUserID());
                 PersonaliaSingleton.getInstance().SetName(us.getfName());
                 PersonaliaSingleton.getInstance().SetEmail(us.getEmail());
@@ -66,10 +63,7 @@ public class Login extends Activity{
                 PersonaliaSingleton.getInstance().SetPhone(us.getPhone());
                 PersonaliaSingleton.getInstance().SetSingle(us.getScoreSingle());
                 PersonaliaSingleton.getInstance().SetDouble(us.getScoreDouble());
-
-=======
                 user = us;
->>>>>>> groups
                 Intent login = new Intent(mContext, Home.class);
                 mContext.startActivity(login);
             }
