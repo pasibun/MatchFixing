@@ -1,7 +1,6 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.os.AsyncTask;
-import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +21,11 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     public String inputDatabase(String inputDb, String file, String export){
         this.export = export;
-        //if (inputDb != null || file != null) {
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.166:80/" + file);
+
+                URL url = new URL("http://10.0.0.34:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -42,8 +41,6 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
                 is.close();
                 httpURLConnection.disconnect();
-
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 return "Exception: " + e.getMessage();
@@ -66,12 +63,14 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String s) {
+        JSONObject root;
+        JSONObject user_data;
         switch(export){
             case "Profile":{
                 try {
                     if(s.length() != 16){
-                        JSONObject root = new JSONObject(s);
-                        JSONObject user_data = root.getJSONObject("user_data");
+                        root = new JSONObject(s);
+                        user_data = root.getJSONObject("user_data");
                         Users_Object uo = new Users_Object(
                                 user_data.getString("id"),
                                 user_data.getString("password"),
@@ -86,7 +85,6 @@ public class DbConnection extends AsyncTask<String, String, String>{
                                 user_data.getString("phone"),
                                 user_data.getDouble("scoreSingle"),
                                 user_data.getDouble("scoreDouble"));
-                       //for (int i = 0; i < user_data.toString(""); i++){}
                         Login.checkLoginInfo(uo);
                     }else Login.checkLoginInfo(null);
 
@@ -97,6 +95,20 @@ public class DbConnection extends AsyncTask<String, String, String>{
             }
             case "Register":{
                 Register.succesfullRegister();
+                break;
+            }
+            case "Group": {
+                String[] users = s.split("&");
+                for(int i = 0; i < users.length; ++i) {
+                    try {
+                        root = new JSONObject(users[i]);
+                        user_data = root.getJSONObject("user_data");
+                        Groups.personList.add(user_data.getString("firstName") + user_data.getString("lastName"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
             }
             case "GetMatch":{
                 Popup p = new Popup();
@@ -112,7 +124,24 @@ public class DbConnection extends AsyncTask<String, String, String>{
                 if(s != "")
                     NewMatchActivity.GetLanes(s);
             }
-            case "": {
+            case "GetGroup" : {
+                String[] users = s.split("&");
+
+                for(int i = 0; i < users.length; ++i) {
+                    try {
+                        root = new JSONObject(users[i]);
+                        user_data = root.getJSONObject("user_data");
+                        Groups_Object go = new Groups_Object(user_data.getString("GroupName"));
+                        for (int j = 1; j < 15; j++){
+                            if (!user_data.getString("Member"+ j).equals(null) || !user_data.getString("Member"+ j).equals("")) {
+                                go.addMember(user_data.getString("Member" + j));
+                            }
+                        }
+                        Groups.groupList.add(go);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             }
         }

@@ -4,23 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Groups_Object{
-    private List<Users_Object> groupinvite;
+    private List<String> groupinvite;
     private String groupName;
 
     public Groups_Object(String groupName){
-        groupinvite = new ArrayList<Users_Object>();
+        groupinvite = new ArrayList<>();
         this.groupName = groupName;
     }
 
-    public List<Users_Object> getGroupinvite() {
+    public List<String> getGroupinvite() {
         return groupinvite;
     }
+
+    public void addMember(String member){groupinvite.add(member); }
 
     public String getGroupName() {
         return groupName;
     }
 
-    public void setGroupinvite(List<Users_Object> groupinvite) {
+    public void setGroupinvite(List<String> groupinvite) {
         this.groupinvite = groupinvite;
     }
 

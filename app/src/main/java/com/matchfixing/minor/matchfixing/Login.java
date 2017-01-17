@@ -19,6 +19,7 @@ public class Login extends Activity{
     static String Name, Password;
     private static Context mContext;
     static Map<String, Integer> members;
+    static Users_Object user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class Login extends Activity{
         String errormsg = "Uw inloggegevens komt niet overeen.";
         if (us != null){
             if(us.getPassword().matches(Password) && us.getUsername().matches(Name)) {
+<<<<<<< HEAD
                 PersonaliaSingleton.getInstance().setUserID(us.GetUserID());
                 PersonaliaSingleton.getInstance().SetName(us.getfName());
                 PersonaliaSingleton.getInstance().SetEmail(us.getEmail());
@@ -65,6 +67,9 @@ public class Login extends Activity{
                 PersonaliaSingleton.getInstance().SetSingle(us.getScoreSingle());
                 PersonaliaSingleton.getInstance().SetDouble(us.getScoreDouble());
 
+=======
+                user = us;
+>>>>>>> groups
                 Intent login = new Intent(mContext, Home.class);
                 mContext.startActivity(login);
             }

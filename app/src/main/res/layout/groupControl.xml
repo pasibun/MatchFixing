@@ -9,43 +9,62 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Maak een nieuw groep aan"
+        android:text="Uw groepsinformatie"
         android:typeface="sans"
         android:textSize="25sp"
         android:textColor="#00aa55"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_above="@+id/linearLayout"
         android:padding="10dp"
         android:id="@+id/createGroupText"/>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#ffffff"
+        android:text="@string/NewGroup"
+        android:textColor="#00aa55"
         android:background="#5d5d5d"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/textCreateGroup"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:layout_marginTop="50dp"
-        android:id="@+id/btnCreateGroup"
-        android:text="@string/CreateGroup"
-        android:onClick="group_group"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:padding="13dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="50dp"
-        android:background="#eee"
-        android:layout_alignBottom="@+id/btnProfile"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textCreateGroup" />
+        android:onClick="groupNew_groupNew"
+        android:id="@+id/btnCreateGroup" />
+
+    <Button
+        android:text="@string/RemovePerson"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:onClick="groupRemove_groupRemove"
+        android:layout_alignBottom="@+id/btnEditGroup"
+        android:layout_toRightOf="@+id/btnEditGroup"
+        android:layout_toEndOf="@+id/btnEditGroup"
+        android:id="@+id/btnRemoveGroup" />
+
+    <GridView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:background="#19ffffff"
+        android:id="@+id/GroupListGrid"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/createGroupText"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/btnCreateGroup"
+        android:layout_alignStart="@+id/btnCreateGroup" />
+
+    <Button
+        android:text="@string/EditGroup"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="groupEdit_groupEdit"
+        android:id="@+id/btnEditGroup"
+        android:layout_alignBaseline="@+id/btnCreateGroup"
+        android:layout_alignBottom="@+id/btnCreateGroup"
+        android:layout_toRightOf="@+id/btnCreateGroup"
+        android:layout_toEndOf="@+id/btnCreateGroup" />
 </RelativeLayout>
