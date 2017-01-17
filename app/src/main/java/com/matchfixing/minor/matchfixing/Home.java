@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Home extends Activity {
 
     String name;
@@ -19,6 +21,12 @@ public class Home extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        Groups.groupList = new ArrayList<>();
+        DbConnection b = new DbConnection();
+        String databaseInfo = "username=" + Login.user.getUsername();
+        String file = "GetGroups.php";
+        String export = "GetGroup";
+        b.execute(databaseInfo, file, export);
     }
 
     public void profile_profile(View view) {
@@ -34,7 +42,7 @@ public class Home extends Activity {
     }
 
     public void group_group(View view) {
-        startActivity(new Intent(this, Group.class));
+        startActivity(new Intent(this, Groups.class));
     }
 
     public void matchmaker_matchmaker(View view) {

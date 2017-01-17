@@ -21,11 +21,10 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     public String inputDatabase(String inputDb, String file, String export){
         this.export = export;
-        //if (inputDb != null || file != null) {
             String data = "";
             int tmp;
             try {
-                URL url = new URL("http://141.252.224.161:80/" + file);
+                URL url = new URL("http://10.0.0.34:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -41,8 +40,6 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
                 is.close();
                 httpURLConnection.disconnect();
-
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
                 return "Exception: " + e.getMessage();
@@ -65,12 +62,14 @@ public class DbConnection extends AsyncTask<String, String, String>{
 
     @Override
     protected void onPostExecute(String s) {
+        JSONObject root;
+        JSONObject user_data;
         switch(export){
             case "Profile":{
                 try {
                     if(s.length() != 16){
-                        JSONObject root = new JSONObject(s);
-                        JSONObject user_data = root.getJSONObject("user_data");
+                        root = new JSONObject(s);
+                        user_data = root.getJSONObject("user_data");
                         Users_Object uo = new Users_Object(user_data.getString("firstName"), user_data.getString("lastName"),
                                 user_data.getString("email"), user_data.getString("password"), user_data.getString("address"),
                                 user_data.getString("city"), user_data.getString("gender"), null, user_data.getString("username"),
@@ -87,8 +86,39 @@ public class DbConnection extends AsyncTask<String, String, String>{
             }
             case "Register":{
                 Register.succesfullRegister();
+                break;
             }
-            case "": {
+            case "Group": {
+                String[] users = s.split("&");
+                for(int i = 0; i < users.length; ++i) {
+                    try {
+                        root = new JSONObject(users[i]);
+                        user_data = root.getJSONObject("user_data");
+                        Groups.personList.add(user_data.getString("firstName") + user_data.getString("lastName"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            }
+            case "GetGroup" : {
+                String[] users = s.split("&");
+
+                for(int i = 0; i < users.length; ++i) {
+                    try {
+                        root = new JSONObject(users[i]);
+                        user_data = root.getJSONObject("user_data");
+                        Groups_Object go = new Groups_Object(user_data.getString("GroupName"));
+                        for (int j = 1; j < 15; j++){
+                            if (!user_data.getString("Member"+ j).equals(null) || !user_data.getString("Member"+ j).equals("")) {
+                                go.addMember(user_data.getString("Member" + j));
+                            }
+                        }
+                        Groups.groupList.add(go);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
                 break;
             }
         }

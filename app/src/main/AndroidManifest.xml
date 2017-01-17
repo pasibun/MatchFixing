@@ -32,9 +32,11 @@
         </activity>
         <activity android:name=".Profile" >
         </activity>
-        <activity android:name=".Group">
+        <activity android:name=".Groups">
         </activity>
         <activity android:name=".Invitation">
+        </activity>
+        <activity android:name=".GroupManagment">
         </activity>
         <activity android:name=".NewMatchDetails"
             android:windowSoftInputMode="adjustPan">

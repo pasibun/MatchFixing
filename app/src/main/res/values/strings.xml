@@ -10,7 +10,15 @@
     <string name="Groups">Groepen beheren</string>
     <string name="Invites">Mijn uitnodigingen</string>
     <string name="Calender">Kalender</string>
-    <string name="CreateGroup">Opslaan</string>
+    <string name="Save">Opslaan</string>
+    <string name="Cancel">Annuleren</string>
+    <string name="EditGroup">Aanpassen</string>
+    <string name="CreateGroupText">Voer een nieuwe groepsnaam in</string>
+    <string name="AddPerson">Toevoegen</string>
+    <string name="RemovePerson">Verwijderen</string>
+    <string name="NewGroup">Nieuw</string>
+    <string name="EditGroupText">Groepen aanmaken en beheren</string>
+
 
 
 </resources>

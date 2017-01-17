@@ -17,6 +17,7 @@ public class Login extends Activity {
     static String Name, Password;
     private static Context mContext;
     static Map<String, Integer> members;
+    static Users_Object user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class Login extends Activity {
         String errormsg = "Uw inloggegevens komt niet overeen.";
         if (us != null){
             if(us.getPassword().matches(Password) && us.getUsername().matches(Name)) {
+                user = us;
                 Intent login = new Intent(mContext, Home.class);
                 mContext.startActivity(login);
             }
