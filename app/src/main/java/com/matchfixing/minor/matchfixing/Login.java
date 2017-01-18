@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,6 +17,7 @@ public class Login extends Activity{
     static String Name, Password;
     private static Context mContext;
     static Map<String, Integer> members;
+    static Users_Object user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,7 @@ public class Login extends Activity{
                 PersonaliaSingleton.getInstance().SetPhone(us.getPhone());
                 PersonaliaSingleton.getInstance().SetSingle(us.getScoreSingle());
                 PersonaliaSingleton.getInstance().SetDouble(us.getScoreDouble());
-
+                user = us;
                 Intent login = new Intent(mContext, Home.class);
                 mContext.startActivity(login);
             }
