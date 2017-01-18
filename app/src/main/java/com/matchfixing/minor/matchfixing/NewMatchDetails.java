@@ -178,10 +178,12 @@ public class NewMatchDetails extends Activity {
         };
 
         List<String> lanesList = new LinkedList<String>(Arrays.asList(lanes));
-        for(int i = 0; i < occupiedLanes.size(); ++i){
-            for(int j = 0; j < lanesList.size(); ++j){
-                if(occupiedLanes.get(i).equals(lanes[j])){
-                    lanesList.set(j,"Bezet");
+        if(occupiedLanes != null) {
+            for (int i = 0; i < occupiedLanes.size(); ++i) {
+                for (int j = 0; j < lanesList.size(); ++j) {
+                    if (occupiedLanes.get(i).equals(lanes[j])) {
+                        lanesList.set(j, "Bezet");
+                    }
                 }
             }
         }

@@ -42,6 +42,8 @@
         </activity>
         <activity android:name=".InvitePeople">
         </activity>
+        <activity android:name=".User_Group_Invite">
+        </activity>
     </application>
 
 </manifest>

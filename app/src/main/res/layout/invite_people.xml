@@ -40,9 +40,45 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp" />
 
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/button7"
+        android:text="Invite"
+        android:hapticFeedbackEnabled="true"
+        android:layout_alignLeft="@+id/textView15"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="7dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:textColor="#00aa55"
+        android:background="#5d5d5d"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/button8"
+        android:text="Invite"
+        android:hapticFeedbackEnabled="true"
+        android:layout_alignLeft="@+id/textView15"
+        android:layout_marginBottom="5dp"
+        android:paddingLeft="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="60dp"/>
+
     <TextView
         android:text="Invite group: "
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/textView15"
         android:textSize="24sp"
@@ -111,5 +147,6 @@
         android:textSize="20sp"
         android:layout_alignBottom="@+id/textView16"
         android:layout_toRightOf="@+id/textView17"
-        android:layout_toEndOf="@+id/textView17" />
+        android:layout_toEndOf="@+id/textView17"
+        android:layout_marginLeft="7dp"/>
 </RelativeLayout>

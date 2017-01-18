@@ -10,8 +10,8 @@ if (mysqli_connect_errno($con))
 $date =  $_POST["matchDate"];
 $time = $_POST["matchTime"];
 $matchType =  $_POST["matchType"];
-$userID = 123;
-$groupID = 123;
+$userID = $_POST["UserID"];
+$groupID = $_POST["GroupID"];
 $matchDegree = $_POST["MatchDegree"];
 $playerRankMin = $_POST["playerRankMin"];
 $playerRankMax = $_POST["playerRankMax"];

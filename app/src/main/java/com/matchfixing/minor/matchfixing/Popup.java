@@ -27,8 +27,8 @@ import java.util.List;
  */
 
 public class Popup extends Activity {
-    public String matchDescription;
-    public int matchID;
+    public String matchDescription, firstName, groupOwner;
+    public int matchID,userID, groupID;
 
     TextView matchDescField;
     TextView matchIDField;
@@ -47,14 +47,18 @@ public class Popup extends Activity {
 
         matchDescription = getIntent().getStringExtra("matchDescription");
         matchID = getIntent().getIntExtra("matchID",0);
+        userID = getIntent().getIntExtra("userID",0);
+        groupID = getIntent().getIntExtra("groupID",0);
+        firstName = getIntent().getStringExtra("firstName");
+        groupOwner = getIntent().getStringExtra("groupOwner");
 
         matchDescField = (TextView) findViewById(R.id.textView6);
         matchIDField = (TextView) findViewById(R.id.textView7);
 
         attendMatchButton = (Button) findViewById(R.id.attendMatch);
 
-        matchDescField.setText(matchDescription);
-        matchIDField.setText(Integer.toString(matchID));
+        //matchDescField.setText(matchDescription);
+
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -63,16 +67,45 @@ public class Popup extends Activity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.85), (int)(height*.3));
-        
-        attendMatchButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view)
-            {
 
-                GetMatch();
-                finish();
-            }
-        });
+        if(userID > 0)
+        {
+            attendMatchButton.setText("Invite");
+            matchDescField.setText(firstName);
+            matchIDField.setText(Integer.toString(userID));
+            attendMatchButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view)
+                {
+                    InvitePeople.userID = Integer.toString(userID);
+                    finish();
+                    User_Group_Invite.mActivity.finish();
+                }
+            });
+        }else if(groupID > 0){
+            attendMatchButton.setText("Invite");
+            matchDescField.setText(groupOwner);
+            matchIDField.setText(Integer.toString(groupID));
+            attendMatchButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view)
+                {
+                    InvitePeople.groupID = Integer.toString(groupID);
+                    finish();
+                    User_Group_Invite.mActivity.finish();
+                }
+            });
+        }
+        else {
+            matchIDField.setText(Integer.toString(matchID));
+            attendMatchButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    GetMatch();
+                    finish();
+                }
+            });
+        }
     }
 
     private void GetMatch()

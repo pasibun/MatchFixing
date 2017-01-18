@@ -304,17 +304,17 @@ public class NewMatchActivity extends AppCompatActivity {
     {
         String[] lanes = s.split("&");
         occupiedLanes = new ArrayList<String>();
+        if(occupiedLanes != null) {
+            for (int i = 0; i < lanes.length; ++i) {
+                try {
+                    JSONObject root = new JSONObject(lanes[i]);
+                    JSONObject user_data = root.getJSONObject("user_data");
+                    LANE = user_data.getString("lane");
 
-        for(int i = 0; i < lanes.length; ++i){
-            try{
-                JSONObject root = new JSONObject(lanes[i]);
-                JSONObject user_data = root.getJSONObject("user_data");
-                LANE = user_data.getString("lane");
-
-                occupiedLanes.add(LANE);
-            }
-            catch(JSONException e){
-                e.printStackTrace();
+                    occupiedLanes.add(LANE);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
