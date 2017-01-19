@@ -1,24 +1,15 @@
 package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.Gravity;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,11 +18,13 @@ import java.util.List;
  */
 
 public class Popup extends Activity {
-    public String matchDescription, firstName, groupOwner;
+    public String matchDescription, firstName, groupOwner, description, date, time, lane, type;
     public int matchID,userID, groupID;
 
-    TextView matchDescField;
-    TextView matchIDField;
+    TextView matchDateTimeField;
+    TextView matchTypeField;
+    TextView matchLaneField;
+    TextView matchDescriptionField;
 
     Button attendMatchButton;
 
@@ -51,13 +44,21 @@ public class Popup extends Activity {
         groupID = getIntent().getIntExtra("groupID",0);
         firstName = getIntent().getStringExtra("firstName");
         groupOwner = getIntent().getStringExtra("groupOwner");
+        description = getIntent().getStringExtra("desc");
 
-        matchDescField = (TextView) findViewById(R.id.textView6);
-        matchIDField = (TextView) findViewById(R.id.textView7);
+        date = getIntent().getStringExtra("matchDate");
+        time = getIntent().getStringExtra("matchTime");
+        lane = getIntent().getStringExtra("matchLane");
+        type = getIntent().getStringExtra("matchType");
+
+        matchDateTimeField = (TextView) findViewById(R.id.textView6);
+        matchDescriptionField = (TextView) findViewById(R.id.textView7);
+        matchLaneField = (TextView) findViewById(R.id.textView19);
+        matchTypeField = (TextView) findViewById(R.id.textView18);
 
         attendMatchButton = (Button) findViewById(R.id.attendMatch);
 
-        //matchDescField.setText(matchDescription);
+        matchDateTimeField.setText("Datum: " + date + "\n " + " Tijd: " + time);
 
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -66,13 +67,15 @@ public class Popup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.85), (int)(height*.3));
+        getWindow().setLayout((int)(width*.85), (int)(height*.5));
 
         if(userID > 0)
         {
             attendMatchButton.setText("Invite");
-            matchDescField.setText(firstName);
-            matchIDField.setText(Integer.toString(userID));
+            matchDateTimeField.setText(firstName);
+            matchLaneField.setText("");
+            matchTypeField.setText("");
+            matchDescriptionField.setText(description);
             attendMatchButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view)
@@ -84,8 +87,10 @@ public class Popup extends Activity {
             });
         }else if(groupID > 0){
             attendMatchButton.setText("Invite");
-            matchDescField.setText(groupOwner);
-            matchIDField.setText(Integer.toString(groupID));
+            matchDateTimeField.setText(groupOwner);
+            matchLaneField.setText("");
+            matchTypeField.setText("");
+            matchDescriptionField.setText(Integer.toString(groupID));
             attendMatchButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view)
@@ -97,7 +102,9 @@ public class Popup extends Activity {
             });
         }
         else {
-            matchIDField.setText(Integer.toString(matchID));
+            matchDescriptionField.setText("Beschrijving: " + description);
+            matchLaneField.setText("Baan: " + lane);
+            matchTypeField.setText("Type: " + type);
             attendMatchButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
