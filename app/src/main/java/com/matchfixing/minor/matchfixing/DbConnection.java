@@ -25,7 +25,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             int tmp;
             try {
 
-                URL url = new URL("http://10.0.0.34:80/" + file);
+                URL url = new URL("http://141.252.208.196:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);

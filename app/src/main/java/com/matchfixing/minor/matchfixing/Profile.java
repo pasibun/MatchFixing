@@ -5,11 +5,10 @@ package com.matchfixing.minor.matchfixing;
  * Edited by Matthijs
  */
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class Profile extends Activity {
 
@@ -28,6 +27,10 @@ public class Profile extends Activity {
         userID = PersonaliaSingleton.getInstance().getUserID();
         InitializeLabels();
         SetUserInfo();
+    }
+
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
     }
 
     public void InitializeLabels()

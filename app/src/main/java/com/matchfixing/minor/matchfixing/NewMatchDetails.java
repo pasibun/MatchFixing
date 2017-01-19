@@ -2,23 +2,17 @@ package com.matchfixing.minor.matchfixing;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -67,6 +61,10 @@ public class NewMatchDetails extends Activity {
         GetIntentValues();
 
         SetSpinner("Type");
+    }
+
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
     }
 
     public void SetupMatches()

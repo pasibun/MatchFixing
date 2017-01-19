@@ -11,6 +11,15 @@
     tools:context="com.matchfixing.minor.matchfixing.NewMatchActivity"
     android:background="#282525">
 
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:background="@drawable/home"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="home_home"
+        android:id="@+id/btnHome" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,7 +172,7 @@
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:id="@+id/spinner"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="45dp"
         android:dropDownSelector="#b0ff0101"
         android:dropDownWidth="150dp"
         android:background="#19ffffff"

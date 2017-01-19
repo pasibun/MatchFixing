@@ -40,6 +40,9 @@ public class Groups extends Activity {
         SetupView();
     }
 
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
+    }
 
     public void SetupView(){
         groupNameList.clear();

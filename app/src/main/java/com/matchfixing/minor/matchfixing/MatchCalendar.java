@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.CalendarView;
-import android.widget.Toast;
-
-import java.util.Calendar;
 
 /**
  * Created by jylti on 28-10-2016.
@@ -50,5 +48,8 @@ public class MatchCalendar extends AppCompatActivity {
         });
     }
 
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
+    }
 
 }
