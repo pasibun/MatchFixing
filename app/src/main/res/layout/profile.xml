@@ -8,6 +8,14 @@
     android:padding="20dp"
     android:weightSum="1">
 
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:background="@drawable/home"
+        android:layout_marginLeft="300dp"
+        android:onClick="home_home"
+        android:id="@+id/btnHome" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

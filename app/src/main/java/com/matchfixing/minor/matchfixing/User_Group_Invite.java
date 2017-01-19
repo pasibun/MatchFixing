@@ -16,7 +16,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -64,6 +63,10 @@ public class User_Group_Invite extends Activity {
 
         User_Group_Invite.BackGround b = new User_Group_Invite.BackGround();
         b.execute();
+    }
+
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
     }
 
     public void SetupView()

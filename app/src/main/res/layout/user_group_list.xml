@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:background="#282828">
 
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:background="@drawable/home"
+        android:layout_marginLeft="340dp"
+        android:onClick="home_home"
+        android:id="@+id/btnHome" />
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

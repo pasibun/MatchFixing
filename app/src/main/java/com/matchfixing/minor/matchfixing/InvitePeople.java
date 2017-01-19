@@ -54,6 +54,10 @@ public class InvitePeople extends Activity {
         SetSpinner("Type");
     }
 
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
+    }
+
     public void SetupBtn()
     {
         setupMatchBtn = (Button) findViewById(R.id.button6);

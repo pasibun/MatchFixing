@@ -48,6 +48,10 @@ public class GroupManagment extends Activity{
             editGroup();
     }
 
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
+    }
+
     private void editGroup(){
         groupName.setText(go.getGroupName().toString());
         selectedPersons = go.getGroupinvite();
@@ -162,11 +166,11 @@ public class GroupManagment extends Activity{
             export = "GetGroup";
             b.execute(databaseInfo, file, export);
 
-            startActivity(new Intent(this, Groups.class));
+            startActivity(new Intent(this, Home.class));
         }else Toast.makeText(ctx, "Voer een groepsnaam in!", Toast.LENGTH_SHORT).show();
     }
 
     public void cancelGroup_cancelGroup(View view) {
-        startActivity(new Intent(this, Groups.class));
+        startActivity(new Intent(this, Home.class));
     }
 }

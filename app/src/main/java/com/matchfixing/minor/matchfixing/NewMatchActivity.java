@@ -6,7 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,15 +19,10 @@ import android.widget.TimePicker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class NewMatchActivity extends AppCompatActivity {
 
@@ -83,6 +77,10 @@ public class NewMatchActivity extends AppCompatActivity {
         ShowDialogOnButtonClick();
         ShowTimePickerDialog();
         SetSpinner("Type");
+    }
+
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
     }
 
     private void SetSpinner(final String spinner)

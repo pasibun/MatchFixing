@@ -5,12 +5,20 @@
     android:layout_height="match_parent"
     android:background="#282828"
     android:padding="20dp">
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:background="@drawable/home"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="home_home"
+        android:id="@+id/btnHome" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/GroupCreation"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:text="@string/EditGroupText"
         android:typeface="sans"
         android:textSize="24sp"
@@ -32,7 +40,7 @@
         android:textSize="20sp"
         android:layout_below="@+id/GroupCreation"
         android:hint="Groepsnaam"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="20dp"
         android:id="@+id/GroupNameText" />
 
