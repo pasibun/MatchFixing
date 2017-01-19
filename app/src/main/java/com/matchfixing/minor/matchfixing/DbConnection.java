@@ -103,7 +103,22 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     try {
                         root = new JSONObject(users[i]);
                         user_data = root.getJSONObject("user_data");
-                        Groups.personList.add(user_data.getString("firstName") + user_data.getString("lastName"));
+                        Users_Object us = new Users_Object(
+                                user_data.getString("id"),
+                                user_data.getString("firstName"),
+                                user_data.getString("lastName"),
+                                "",
+                                "",
+                                "",
+                                "",
+                                null,
+                                user_data.getString("userName"),
+                                null,
+                                null,
+                                0,
+                                0);
+                        Groups.personListObject.add(us);
+                        Groups.personList.add(user_data.getString("firstName") + " " + user_data.getString("lastName"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -131,7 +146,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     try {
                         root = new JSONObject(users[i]);
                         user_data = root.getJSONObject("user_data");
-                        Groups_Object go = new Groups_Object(user_data.getString("GroupName"));
+                        Groups_Object go = new Groups_Object(user_data.getString("GroupName"), Integer.parseInt(user_data.getString("GroupID")));
                         for (int j = 1; j < 15; j++){
                             if (!user_data.getString("Member"+ j).equals(null) || !user_data.getString("Member"+ j).equals("")) {
                                 go.addMember(user_data.getString("Member" + j));

@@ -11,8 +11,7 @@
         android:background="@drawable/home"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="home_home"
-        android:id="@+id/btnHome" />
+        android:onClick="home_home" />
 
     <TextView
         android:layout_width="match_parent"

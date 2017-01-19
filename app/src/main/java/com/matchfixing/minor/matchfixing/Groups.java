@@ -22,6 +22,7 @@ public class Groups extends Activity {
     private GridView GroupListGrid;
     static List<String> personList;
     static List<Groups_Object> groupList;
+    static List<Users_Object> personListObject;
     private List<String> groupNameList;
     private String selectedGroup;
     private int previousSelectedPosition = -1;
@@ -31,12 +32,12 @@ public class Groups extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.groupcontrol);
         GroupListGrid = (GridView) findViewById(R.id.GroupListGrid);
-        personList = new ArrayList<>();
         groupNameList = new ArrayList<>();
         DbConnection b = new DbConnection();
+        String databaseInfo = "username=" +  PersonaliaSingleton.getInstance().GetUsername();
         String file = "GetPersonInfo.php";
         String export = "Group";
-        b.execute("", file, export);
+        b.execute(databaseInfo, file, export);
         SetupView();
     }
 

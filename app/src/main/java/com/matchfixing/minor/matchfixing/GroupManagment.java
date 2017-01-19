@@ -128,7 +128,7 @@ public class GroupManagment extends Activity{
 
     public void addPerson_addPerson(View View){
         if(!selectedPerson.equals("") || !selectedPerson.equals(null)) {
-            if(selectedPersons.size()>= 1) {
+            if(selectedPersons.size()>= 1 && !selectedPerson.equals(PersonaliaSingleton.getInstance().GetUsername())) {
                 for (String s : selectedPersons) {
                     if (!s.equals(selectedPerson) && selectedPersons.size() < 15) {
                         selectedPersons.add(selectedPerson);

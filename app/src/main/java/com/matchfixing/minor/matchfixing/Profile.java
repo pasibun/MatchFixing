@@ -29,7 +29,7 @@ public class Profile extends Activity {
         SetUserInfo();
     }
 
-    public void home_home(View view){
+    public void home_home1(View view){
         startActivity(new Intent(this, Home.class));
     }
 
