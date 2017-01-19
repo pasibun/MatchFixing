@@ -12,8 +12,7 @@
         android:layout_width="40dp"
         android:background="@drawable/home"
         android:layout_marginLeft="320dp"
-        android:onClick="home_home"
-        android:id="@+id/btnHome" />
+        android:onClick="home_home" />
 
     <LinearLayout
         android:layout_width="match_parent"

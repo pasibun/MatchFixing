@@ -13,8 +13,7 @@
         android:layout_width="40dp"
         android:background="@drawable/home"
         android:layout_marginLeft="300dp"
-        android:onClick="home_home"
-        android:id="@+id/btnHome" />
+        android:onClick="home_home1"/>
 
     <TextView
         android:layout_width="match_parent"

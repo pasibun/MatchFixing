@@ -54,7 +54,7 @@ public class InvitePeople extends Activity {
         SetSpinner("Type");
     }
 
-    public void home_home(View view){
+    public void home_home2(View view){
         startActivity(new Intent(this, Home.class));
     }
 

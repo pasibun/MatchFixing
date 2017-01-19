@@ -74,6 +74,10 @@ public class Invitation extends Activity {
         b.execute(s);
     }
 
+    public void home_home(View view){
+        startActivity(new Intent(this, Home.class));
+    }
+
     public void SetupView()
     {
         final GridView gv = (GridView) findViewById(R.id.gridView);

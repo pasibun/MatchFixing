@@ -22,10 +22,18 @@ public class Home extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
         Groups.groupList = new ArrayList<>();
+        Groups.personList = new ArrayList<>();
+        Groups.personListObject = new ArrayList<>();
         DbConnection b = new DbConnection();
         String databaseInfo = "username=" + Login.user.getUsername();
         String file = "GetGroups.php";
         String export = "GetGroup";
+        b.execute(databaseInfo, file, export);
+
+        b = new DbConnection();
+        databaseInfo = "username=" +  PersonaliaSingleton.getInstance().GetUsername();
+        file = "GetPersonInfo.php";
+        export = "Group";
         b.execute(databaseInfo, file, export);
     }
 

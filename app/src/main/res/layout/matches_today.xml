@@ -10,8 +10,7 @@
         android:layout_width="40dp"
         android:background="@drawable/home"
         android:layout_marginLeft="320dp"
-        android:onClick="home_home"
-        android:id="@+id/btnHome" />
+        android:onClick="home_home"/>
 
     <TextView
         android:layout_width="wrap_content"

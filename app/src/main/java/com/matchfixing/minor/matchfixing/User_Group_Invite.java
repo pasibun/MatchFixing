@@ -3,7 +3,6 @@ package com.matchfixing.minor.matchfixing;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +10,6 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,9 +24,8 @@ public class User_Group_Invite extends Activity {
 
     GridView userGrid;
     List<String> users;
-    List<String> groups;
+    List<String> usersTemp;
     Map<String, Integer> userIDs;
-    Map<String, Integer> groupIDs;
 
     private int previousSelectedPosition = -1;
     public static Activity mActivity;
@@ -50,30 +40,37 @@ public class User_Group_Invite extends Activity {
         invitationType = getIntent().getStringExtra("Invitation");
 
         users = new ArrayList<String>();
+        usersTemp = new ArrayList<String>();
         userIDs = new HashMap<String, Integer>();
-
-        groups = new ArrayList<String>();
-        groupIDs = new HashMap<String, Integer>();
 
         mActivity = this;
 
         userGrid = (GridView) findViewById(R.id.gridView);
 
         SetupView();
-
-        User_Group_Invite.BackGround b = new User_Group_Invite.BackGround();
-        b.execute();
     }
 
-    public void home_home(View view){
+    public void home_home(View view) {
         startActivity(new Intent(this, Home.class));
     }
 
-    public void SetupView()
-    {
+    public void SetupView() {
+        if (!invitationType.equals("user") && users.isEmpty()) {
+            for (Groups_Object go : Groups.groupList) {
+                users.add(go.getGroupName().toString());
+                usersTemp.add(go.getGroupID()+ " " + go.getGroupName().toString());
+                userIDs.put(go.getGroupID() + " " + go.getGroupName().toString(), go.getGroupID());
+            }
+        } else {
+            users = Groups.personList;
+            for(Users_Object u : Groups.personListObject) {
+                userIDs.put(u.getUsername() + " " + u.getfName(), Integer.parseInt(u.GetUserID()));
+                usersTemp.add(u.getUsername() + " " + u.getfName());
+            }
+        }
         final GridView gv = (GridView) findViewById(R.id.gridView);
-        gv.setAdapter(new GridViewAdapter(User_Group_Invite.this, users){
-            public View getView(int position, View convertView, ViewGroup parent){
+        gv.setAdapter(new GridViewAdapter(User_Group_Invite.this, users) {
+            public View getView(int position, View convertView, ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
 
                 TextView tv = (TextView) view;
@@ -95,24 +92,23 @@ public class User_Group_Invite extends Activity {
                 TextView previousSelectedView = (TextView) gv.getChildAt(previousSelectedPosition);
 
                 //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
-                int clickedUserID = userIDs.get(users.get(position));
+                int clickedUserID = userIDs.get(usersTemp.get(position));
 
                 int userID = clickedUserID;
 
                 Intent Popup = new Intent(User_Group_Invite.this, Popup.class);
 
-                if(invitationType.equals("user")) {
+                if (invitationType.equals("user")) {
                     Popup.putExtra("userID", userID);
                     Popup.putExtra("firstName", FIRSTNAME);
-                }else{
+                } else {
                     Popup.putExtra("groupID", userID);
                     Popup.putExtra("groupOwner", GROUPOWNER);
                 }
                 startActivity(Popup);
 
                 // If there is a previous selected view exists
-                if (previousSelectedPosition != -1)
-                {
+                if (previousSelectedPosition != -1 && position != previousSelectedPosition) {
                     previousSelectedView.setSelected(false);
 
                     previousSelectedView.setTextColor(Color.WHITE);
@@ -120,77 +116,5 @@ public class User_Group_Invite extends Activity {
                 previousSelectedPosition = position;
             }
         });
-    }
-
-    class BackGround extends AsyncTask<String, String, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            String data = "";
-            int tmp;
-            URL url;
-
-            try {
-                if(invitationType.equals("user")) {
-                    url = new URL("http://141.252.224.166:80/GetProfiles.php");
-                }else                {
-                    url = new URL("http://141.252.224.166:80/GetGroups.php");
-                }
-
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                httpURLConnection.setDoOutput(true);
-
-                InputStream is = httpURLConnection.getInputStream();
-                while ((tmp = is.read()) != -1) {
-                    data += (char) tmp;
-                }
-
-                is.close();
-                httpURLConnection.disconnect();
-
-                return data;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                return "Exception: " + e.getMessage();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "Exception: " + e.getMessage();
-            }
-        }
-        @Override
-        protected void onPostExecute(String s) {
-            String err = null;
-            String[] matchStrings = s.split("&");
-            int fieldID = -1;
-
-            for(int i = 0; i < matchStrings.length; ++i)
-            {
-                try {
-                    JSONObject root = new JSONObject(matchStrings[i]);
-                    JSONObject user_data = root.getJSONObject("user_data");
-
-                    if(invitationType.equals("user")) {
-                        USERID = user_data.getString("userID");
-                        USERNAME = user_data.getString("userName");
-                        FIRSTNAME = user_data.getString("firstName");
-
-                        users.add(USERNAME + " " + FIRSTNAME);
-                        userIDs.put(USERNAME + " " + FIRSTNAME, Integer.parseInt(USERID));
-                    }
-                    else{
-                        GROUPID = user_data.getString("groupID");
-                        GROUPOWNER = user_data.getString("groupOwner");
-
-                        users.add(GROUPID + " " + GROUPOWNER);
-                        userIDs.put(GROUPID + " " + GROUPOWNER, Integer.parseInt(GROUPID));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    err = "Exception: " + e.getMessage();
-                }
-            }
-            SetupView();
-        }
     }
 }

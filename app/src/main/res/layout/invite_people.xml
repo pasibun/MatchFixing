@@ -10,8 +10,7 @@
         android:background="@drawable/home"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="home_home"
-        android:id="@+id/btnHome" />
+        android:onClick="home_home2"/>
 
     <TextView
         android:text="Invite people: "
