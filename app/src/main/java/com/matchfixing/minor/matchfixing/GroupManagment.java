@@ -24,7 +24,7 @@ import java.util.List;
 public class GroupManagment extends Activity{
     private Context ctx;
     private EditText groupName;
-    private GridView PersonListGrid;
+    private GridView personListGrid;
     private Spinner SearchPersonDropdown;
     private String selectedPerson;
     private String selectedPersonRemove;
@@ -42,7 +42,7 @@ public class GroupManagment extends Activity{
         selectedPersons = new ArrayList<>();
         SearchPersonDropdown = (Spinner) findViewById(R.id.SearchPersonDropdown);
         groupName = (EditText) findViewById(R.id.GroupNameText);
-        PersonListGrid = (GridView) findViewById(R.id.PersonListGrid);
+        personListGrid = (GridView) findViewById(R.id.PersonListGrid);
         fillSpinnerList();
         if(go != null)
             editGroup();
@@ -126,9 +126,10 @@ public class GroupManagment extends Activity{
         if(!selectedPerson.equals("") || !selectedPerson.equals(null)) {
             if(selectedPersons.size()>= 1) {
                 for (String s : selectedPersons) {
-                    if (!s.equals(selectedPerson) && selectedPersons.size() <= 15) {
+                    if (!s.equals(selectedPerson) && selectedPersons.size() < 15) {
                         selectedPersons.add(selectedPerson);
                         SetupView();
+                        break;
                     } else
                         Toast.makeText(ctx, "Persoon is al toegevoegt", Toast.LENGTH_SHORT).show();
                 }
@@ -140,13 +141,14 @@ public class GroupManagment extends Activity{
     }
 
     public void saveGroup_saveGroup(View view) {
+        String name = PersonaliaSingleton.getInstance().GetUsername();
         if (!groupName.getText().toString().equals("") && selectedPersons.size() >= 1 ||
                 !groupName.getText().toString().equals(null) && selectedPersons.size() >= 1){
             DbConnection b = new DbConnection();
-            String databaseInfo = "username=" +  Login.user.getUsername() + "&groupname=" + groupName.getText().toString();
+            String databaseInfo = "username=" +  name + "&groupname=" + groupName.getText().toString();
             int count=1;
             for(String s : selectedPersons) {
-                if(!s.equals(Login.user.getUsername()))
+                if(!s.equals(name))
                     databaseInfo = databaseInfo + "&member" + count +"="+  s;
                 count++;
             }
@@ -155,7 +157,7 @@ public class GroupManagment extends Activity{
             b.execute(databaseInfo, file, export);
 
             b = new DbConnection();
-            databaseInfo = "username=" +  Login.user.getUsername();
+            databaseInfo = "username=" + name;
             file = "GetGroups.php";
             export = "GetGroup";
             b.execute(databaseInfo, file, export);
