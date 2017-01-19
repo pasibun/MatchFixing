@@ -29,7 +29,7 @@ public class Popup extends Activity {
     Button attendMatchButton;
 
     static List<String> matchIDs;
-
+    static String matchType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,13 +121,15 @@ public class Popup extends Activity {
         String file = "GetAllAcceptedMatches.php";
 
         DbConnection db = new DbConnection();
+        db.matchType  = type;
         db.execute(input, file, "GetMatch");
     }
 
-    public void CheckMatch(String user_data)
+    public void CheckMatch(String user_data, String matchType)
     {
         String[] matchStrings = user_data.split("&");
         String selectedMatchID = "";
+        String selectedMatchType = matchType;
         for(int i = 0; i < matchStrings.length; ++i) {
             try {
 
@@ -142,26 +144,31 @@ public class Popup extends Activity {
                 e.printStackTrace();
             }
         }
-        CheckIfIDExists(selectedMatchID);
+        CheckIfIDExists(selectedMatchID, selectedMatchType);
     }
 
-    private void CheckIfIDExists(String id)
+    private void CheckIfIDExists(String id, String type)
     {
         if(!matchIDs.contains(id))
         {
-            new Popup().AcceptMatch("AcceptMatch.php", id);
+            new Popup().AcceptMatch("AcceptMatch.php", id, type);
         }
         else {
             new Popup().GetMatchByID("GetAcceptedMatchesByID.php", id);
         }
     }
 
-    private void AcceptMatch(String file, String matchID)
+    private void AcceptMatch(String file, String matchID, String matchType)
     {
-        String input = "MatchID="+matchID + "&MatchOwner=" + Integer.toString(1234)+ "&UserID2=" + Integer.toString(3456);
+
+        String input = "MatchID="+matchID + "&MatchOwner=" + Integer.toString(1234)+ "&UserID2=" + PersonaliaSingleton.getInstance().getUserID() + "&matchType=" + matchType;
 
         DbConnection db = new DbConnection();
-        db.execute(input, file, "");
+        if(matchType.equals("Single")){
+            db.matchId = matchID;
+            db.execute(input, file, "DeleteMatch");
+        }else
+            db.execute(input, file, "");
     }
 
     private void GetMatchByID(String file, String matchID)
@@ -172,12 +179,18 @@ public class Popup extends Activity {
         db.execute(input, file, "GetMatchByID");
     }
 
-    private void UpdateMatch(String file, String matchID)
+    private void UpdateMatch(String file, String matchID, boolean deleteMatch)
     {
-        String input = "MatchID="+matchID + "&UserID=" + Integer.toString(5678);
+        String input = "MatchID="+matchID + "&UserID=" + PersonaliaSingleton.getInstance().getUserID();
 
         DbConnection db = new DbConnection();
-        db.execute(input, file, "");
+        if(deleteMatch) {
+            db.matchId = matchID;
+            db.execute(input, file, "DeleteMatch");
+        }
+        else{
+            db.execute(input, file, "");
+        }
     }
 
     public void CheckForMatchToUpdate(String user_data)
@@ -192,9 +205,9 @@ public class Popup extends Activity {
             String USERID4 = s.getString("UserID4");
 
             if (USERID3.equals("null")) {
-                new Popup().UpdateMatch("UpdateMatch.php", MATCHID);
+                new Popup().UpdateMatch("UpdateMatch.php", MATCHID, false);
             } else if (USERID4.equals("null")) {
-                new Popup().UpdateMatch("Update4thPlayer.php", MATCHID);
+                new Popup().UpdateMatch("Update4thPlayer.php", MATCHID, true);
             }
 
         }catch (JSONException e) {

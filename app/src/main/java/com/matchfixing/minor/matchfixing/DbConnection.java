@@ -18,6 +18,8 @@ import java.net.URL;
 
 public class DbConnection extends AsyncTask<String, String, String>{
     private String export;
+    public String matchId;
+    public String matchType;
 
     public String inputDatabase(String inputDb, String file, String export){
         this.export = export;
@@ -25,7 +27,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             int tmp;
             try {
 
-                URL url = new URL("http://141.252.208.196:80/" + file);
+                URL url = new URL("http://141.252.224.168:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -113,7 +115,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             case "GetMatch":{
                 Popup p = new Popup();
                 if(s != "")
-                    p.CheckMatch(s);
+                    p.CheckMatch(s, matchType);
             }
             case "GetMatchByID":{
                 Popup p = new Popup();
@@ -143,6 +145,12 @@ public class DbConnection extends AsyncTask<String, String, String>{
                     }
                 }
                 break;
+            }
+
+            case "DeleteMatch" :{
+                String input = "MatchID="+matchId;
+
+                MatchDeleter.getInstance().DeleteMatch(matchId, input, "DeleteMatch.php");
             }
         }
     }
