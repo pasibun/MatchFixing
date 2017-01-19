@@ -26,13 +26,18 @@ import java.util.List;
 import java.util.Map;
 
 public class Invitation extends Activity {
-    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE;
+    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE, MATCHDESCRIPTION;
 
     int userID;
     String s;
 
     List<String> matches = null;
+    List<String> matchDates = null;
+    List<String> matchTimes = null;
+    List<String> matchLanes = null;
+    List<String> matchTypes = null;
     Map<String, Integer> matchIDs = null;
+    List<String> matchDescriptionsList = null;
 
     GridView matchGrid;
 
@@ -44,15 +49,20 @@ public class Invitation extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matches_today);
 
-        userID = 123;
+        userID = Integer.parseInt(PersonaliaSingleton.getInstance().getUserID());
 
         matches = new ArrayList<String>();
         matchIDs = new HashMap<String, Integer>();
+        matchDescriptionsList = new ArrayList<>();
+        matchDates = new ArrayList<>();
+        matchTimes = new ArrayList<>();
+        matchLanes = new ArrayList<>();
+        matchTypes = new ArrayList<>();
 
         s = Integer.toString(userID);
 
         txtView = (TextView) findViewById(R.id.textView2);
-
+        txtView.setText("Uitnodigingen");
         matchGrid = (GridView) findViewById(R.id.gridView);
 
         SetupView();
@@ -61,7 +71,7 @@ public class Invitation extends Activity {
         String fileName = "GetInvitations.php";
         Invitation.BackGround b = new Invitation.BackGround();
 
-        b.execute("123");
+        b.execute(s);
     }
 
     public void home_home(View view){
@@ -98,11 +108,22 @@ public class Invitation extends Activity {
                     clickedMatchID = matchIDs.get(matches.get(position));
                 }
                 String matchDescription = matches.get(position);
+                String description = matchDescriptionsList.get(position);
+                String matchDate = matchDates.get(position);
+                String matchTime = matchTimes.get(position);
+                String matchLane = matchLanes.get(position);
+                String matchType = matchTypes.get(position);
+
                 int matchID = clickedMatchID;
 
                 Intent Popup = new Intent(Invitation.this, Popup.class);
                 Popup.putExtra("matchDescription", matchDescription);
+                Popup.putExtra("desc", description);
                 Popup.putExtra("matchID", matchID);
+                Popup.putExtra("matchDate", matchDate);
+                Popup.putExtra("matchTime", matchTime);
+                Popup.putExtra("matchLane", matchLane);
+                Popup.putExtra("matchType", matchType);
                 startActivity(Popup);
 
                 // If there is a previous selected view exists
@@ -127,7 +148,7 @@ public class Invitation extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.166:80/GetInvitations.php");
+                URL url = new URL("http://141.252.224.168:80/GetInvitations.php");
 
                 String urlParams = "userID=" + userID;
 
@@ -171,9 +192,17 @@ public class Invitation extends Activity {
                     MATCHTIME = user_data.getString("matchTime");
                     MATCHTYPE = user_data.getString("MatchType");
                     MATCHLANE = user_data.getString("lane");
+                    MATCHDESCRIPTION = user_data.getString("description");
+
+                    //dates times lanes types
+                    matchDates.add(MATCHDATE);
+                    matchTimes.add(MATCHTIME);
+                    matchTypes.add(MATCHTYPE);
+                    matchLanes.add(MATCHLANE);
 
                     matches.add(MATCHDATE + " " + MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE);
                     matchIDs.put(MATCHDATE + " " + MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE, Integer.parseInt(MATCHID));
+                    matchDescriptionsList.add(MATCHDESCRIPTION);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
