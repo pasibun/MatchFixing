@@ -25,7 +25,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
             int tmp;
             try {
 
-                URL url = new URL("http://141.252.208.196:80/" + file);
+                URL url = new URL("http://141.252.208.167:80/" + file);
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setDoOutput(true);
@@ -68,13 +68,14 @@ public class DbConnection extends AsyncTask<String, String, String>{
         switch(export){
             case "Profile":{
                 try {
-                    if(s.length() != 16){
+                    if(true){
                         root = new JSONObject(s);
                         user_data = root.getJSONObject("user_data");
                         Users_Object uo = new Users_Object(
                                 user_data.getString("id"),
                                 user_data.getString("password"),
                                 user_data.getString("firstName"),
+                                user_data.getString("lastName"),
                                 user_data.getString("email"),
                                 user_data.getString("address"),
                                 user_data.getString("city"),
@@ -105,6 +106,7 @@ public class DbConnection extends AsyncTask<String, String, String>{
                         user_data = root.getJSONObject("user_data");
                         Users_Object us = new Users_Object(
                                 user_data.getString("id"),
+                                "",
                                 user_data.getString("firstName"),
                                 user_data.getString("lastName"),
                                 "",

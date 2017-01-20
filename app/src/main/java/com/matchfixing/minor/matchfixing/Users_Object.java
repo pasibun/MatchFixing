@@ -1,7 +1,5 @@
 package com.matchfixing.minor.matchfixing;
 
-import java.util.Date;
-
 /**
  * Created by LaptopPasibun on 27-10-2016.
  */
@@ -11,12 +9,13 @@ public class Users_Object {
     private String dateOfBirth;
     private double scoreSingle, scoreDouble;
 
-    public Users_Object(String userID, String password, String fName, String email, String address,
+    public Users_Object(String userID, String password, String fName, String lName, String email, String address,
                         String city, String gender, String dateOfBirth, String username, String mobilePhone,
                         String phone, double scoreSingle, double scoreDouble){
         this.userID = userID;
         this.password = password;
         this.fName = fName;
+        this.lName = lName;
         this.email = email;
         this.address = address;
         this.city = city;
@@ -28,6 +27,7 @@ public class Users_Object {
         this.scoreSingle = scoreSingle;
         this.scoreDouble = scoreDouble;
     }
+    public String GetlName() { return lName; }
 
     public String GetUserID() { return userID; }
 
