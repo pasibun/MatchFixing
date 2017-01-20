@@ -10,9 +10,10 @@ if (mysqli_connect_errno($con))
 $MatchID =  $_POST["MatchID"];
 $MatchOwner = $_POST["MatchOwner"];
 $UserID2 =  $_POST["UserID2"];
+$MatchType = $_POST["matchType"];
 
-$query = "INSERT INTO acceptedmatches(MatchID, MatchOwner, UserID2) 
-				  VALUES('$MatchID', '$MatchOwner', '$UserID2')";
+$query = "INSERT INTO acceptedmatches(MatchID, MatchOwner, UserID2, matchType) 
+				  VALUES('$MatchID', '$MatchOwner', '$UserID2', '$MatchType')";
 
 $result = mysqli_query($con,$query);
 echo $username;

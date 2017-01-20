@@ -35,6 +35,11 @@ public class MatchesToday extends Activity{
     TextView txtView;
 
     List<String> matches;
+
+    List<String> matchDates = null;
+    List<String> matchTimes = null;
+    List<String> matchLanes = null;
+    List<String> matchTypes = null;
     Map<String, Integer> matchIDs;
 
     GridView matchGrid;
@@ -56,6 +61,12 @@ public class MatchesToday extends Activity{
         day = getIntent().getStringExtra("day");
         month = getIntent().getStringExtra("month");
         year = getIntent().getStringExtra("year");
+
+
+        matchDates = new ArrayList<>();
+        matchTimes = new ArrayList<>();
+        matchLanes = new ArrayList<>();
+        matchTypes = new ArrayList<>();
 
         txtView.setText(day + "-" + month + "-" + year);
         SetupView();
@@ -100,11 +111,21 @@ public class MatchesToday extends Activity{
                     int clickedMatchID = matchIDs.get(matches.get(position));
 
                     String matchDescription = matches.get(position);
+
+                    String matchDate = matchDates.get(position);
+                    String matchTime = matchTimes.get(position);
+                    String matchLane = matchLanes.get(position);
+                    String matchType = matchTypes.get(position);
                     int matchID = clickedMatchID;
 
                     Intent Popup = new Intent(MatchesToday.this, Popup.class);
                     Popup.putExtra("matchDescription", matchDescription);
                     Popup.putExtra("matchID", matchID);
+
+                    Popup.putExtra("matchDate", matchDate);
+                    Popup.putExtra("matchTime", matchTime);
+                    Popup.putExtra("matchLane", matchLane);
+                    Popup.putExtra("matchType", matchType);
                     startActivity(Popup);
 
                     // If there is a previous selected view exists
@@ -133,6 +154,7 @@ public class MatchesToday extends Activity{
             try {
 
                 URL url = new URL("http://141.252.208.167:80/GetMatch.php");
+
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -175,6 +197,11 @@ public class MatchesToday extends Activity{
                     MATCHTIME = user_data.getString("matchTime");
                     MATCHTYPE = user_data.getString("MatchType");
                     MATCHLANE = user_data.getString("lane");
+
+                    matchDates.add(MATCHDATE);
+                    matchTimes.add(MATCHTIME);
+                    matchTypes.add(MATCHTYPE);
+                    matchLanes.add(MATCHLANE);
 
                     matches.add(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE);
                     matchIDs.put(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE, Integer.parseInt(MATCHID));
