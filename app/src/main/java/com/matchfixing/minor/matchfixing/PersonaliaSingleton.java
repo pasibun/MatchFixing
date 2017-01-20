@@ -79,13 +79,13 @@ public class PersonaliaSingleton {
 
     public String GetPhone(){return phone; }
 
-    private Double scoreSingle;
-    public void SetSingle(Double scoreSingle) {this.scoreSingle = scoreSingle;}
+    private double scoreSingle;
+    public void SetSingle(double scoreSingle) {this.scoreSingle = scoreSingle;}
 
-    public Double GetSingle(){return scoreSingle; }
+    public double GetSingle(){return scoreSingle; }
 
-    private Double scoreDouble;
-    public void SetDouble(Double scoreDouble) {this.scoreDouble = scoreDouble;}
+    private double scoreDouble;
+    public void SetDouble(double scoreDouble) {this.scoreDouble = scoreDouble;}
 
-    public Double GetDouble(){return scoreDouble; }
+    public double GetDouble(){return scoreDouble; }
 }
