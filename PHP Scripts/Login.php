@@ -15,19 +15,20 @@ $response = array();
 
 
 while($row = mysqli_fetch_array($result)){
-    $response = array("id"=>$row[0], 
-    	"username"=>$row[1],
-    	"password"=>$row[2],
-    	"gender"=>$row[3], 
-    	"firstName"=>$row[4], 
-    	"email"=>$row[5], 
-    	"address"=>$row[6], 
-    	"city"=>$row[7], 
-    	"dateOfBirth"=>$row[8], 
-    	"mobilePhone"=>$row[9], 
-    	"phone"=>$row[10], 
-    	"scoreSingle"=>$row[11], 
-    	"scoreDouble"=>$row[12]);
+    $response = array("id"=>$row['id'], 
+    	"username"=>$row['username'],
+    	"password"=>$row['password'],
+    	"gender"=>$row['gender'], 
+    	"firstName"=>$row['firstName'],
+		"lastName"=>$row['lastName'],
+    	"email"=>$row['email'], 
+    	"address"=>$row['address'], 
+    	"city"=>$row['city'], 
+    	"dateOfBirth"=>$row['dateOfBirth'], 
+    	"mobilePhone"=>$row['mobilePhone'], 
+    	"phone"=>$row['phone'], 
+    	"scoreSingle"=>$row['scoreSingle'], 
+    	"scoreDouble"=>$row['scoreDouble']);
 }
  
 echo json_encode(array("user_data"=>$response)); 

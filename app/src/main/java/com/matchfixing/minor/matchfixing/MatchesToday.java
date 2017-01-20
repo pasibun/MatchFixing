@@ -153,7 +153,7 @@ public class MatchesToday extends Activity{
 
             try {
 
-                URL url = new URL("http://141.252.224.168:80/GetMatch.php");
+                URL url = new URL("http://141.252.224.118:80/GetMatch.php");
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

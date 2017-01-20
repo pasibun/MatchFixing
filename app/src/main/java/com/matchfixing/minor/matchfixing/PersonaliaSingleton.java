@@ -45,7 +45,7 @@ public class PersonaliaSingleton {
     }
 
     private String address;
-    public void SetAddress(String adress) {this.address = address;}
+    public void SetAddress(String address) {this.address = address;}
 
     public String GetAddress(){return address; }
 
