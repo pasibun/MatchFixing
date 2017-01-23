@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,8 +42,8 @@ public class NewMatchActivity extends AppCompatActivity {
     TextView matchDegreeField;
     TextView invitedPersonField;
 
-    int year_x, month_x, day_x;
-    int hour_x, minute_x, hourBefore, hourAfter;
+    int year_x, month_x, day_x =0;
+    int hour_x, minute_x, hourBefore, hourAfter = 0;
 
     static final int DIALOG_ID = 0;
     static final int DIALOG_ID2 = 1;
@@ -64,10 +67,18 @@ public class NewMatchActivity extends AppCompatActivity {
     Context ctx=this;
     String MATCHDATE = null, MATCHTIME = null, MATCHTYPE = null;
 
+    private TextView DateTextField;
+    private TextView TimeTextField;
+    private Button button4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newmatch_activity);
+
+        DateTextField =  (TextView)findViewById(R.id.DateTextField);
+        TimeTextField = (TextView)findViewById(R.id.TimeTextField);
+        button4 = (Button)findViewById(R.id.button4);
 
         final Calendar cal = Calendar.getInstance();
         year_x = cal.get(Calendar.YEAR);
@@ -77,6 +88,9 @@ public class NewMatchActivity extends AppCompatActivity {
         ShowDialogOnButtonClick();
         ShowTimePickerDialog();
         SetSpinner("Type");
+        if(TimeTextField.getText().toString().equals("Time:") || DateTextField.getText().toString().equals("Date:")) {
+            button4.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
+        }
     }
 
     public void home_home(View view){
@@ -236,6 +250,9 @@ public class NewMatchActivity extends AppCompatActivity {
             dateString = yearString + "-" + monthString + "-" + day;
 
             dateField.setText("Date: " + day_x+ " / "  + month_x + " / " + year_x);
+            if(hour_x != 0)
+                button4.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+
         }
     };
 
@@ -263,6 +280,7 @@ public class NewMatchActivity extends AppCompatActivity {
                     timeString = Integer.toString(hour_x) + ":" + "0" + Integer.toString(minute_x) + ":00";
                     timeStringAfter = Integer.toString(hourAfter) + ":" + "0" + Integer.toString(minute_x) + ":00";
                     timeStringBefore = Integer.toString(hourBefore) + ":" + "0" + Integer.toString(minute_x) + ":00";
+
                 }
             }
             else if(minute_x >= 10)
@@ -273,6 +291,7 @@ public class NewMatchActivity extends AppCompatActivity {
                     timeString = Integer.toString(hour_x) + "0" + ":" + Integer.toString(minute_x) + ":00";
                     timeStringAfter = Integer.toString(hourAfter) + "0" + ":" + Integer.toString(minute_x) + ":00";
                     timeStringBefore = Integer.toString(hourBefore) + "0" + ":" + Integer.toString(minute_x) + ":00";
+
                 }
                 else
                 {
@@ -288,6 +307,10 @@ public class NewMatchActivity extends AppCompatActivity {
 
     public void GetOccupiedLanes()
     {
+        if(year_x != 0) {
+            button4.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
+            button4.invalidate();
+        }
         String databaseInfo = "hourBefore="+timeStringBefore+"&hourAfter="+timeStringAfter+"&matchDate="+dateString;
         String fileName = "GetOccupiedLanes.php";
         DbConnection b = new DbConnection();
@@ -324,16 +347,15 @@ public class NewMatchActivity extends AppCompatActivity {
 
         ParseDate();
         ParseTime();
-
-        if(matchVisibility.equals("Public"))
-        {
-            StartIntent(matchDetails);
-        }
-        else
-        {
-            StartIntent(invitePeople);
-        }
+        if(matchDate != null || matchTime != null) {
+            if (matchVisibility.equals("Public")) {
+                StartIntent(matchDetails);
+            } else {
+                StartIntent(invitePeople);
+            }
+        }else Toast.makeText(ctx, "Vul alle waardes in.", Toast.LENGTH_SHORT).show();
     }
+
     private void StartIntent(Intent i)
     {
         i.putExtra("MATCH_TYPE", matchType);
