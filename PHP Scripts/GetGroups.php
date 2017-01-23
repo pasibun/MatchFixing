@@ -2,7 +2,7 @@
 error_reporting(0);
 $con=mysqli_connect("localhost","root","","androidtest");
  
-$name = "test";//$_POST["username"];
+$name = $_POST["username"];
  
 $sql = "SELECT * FROM `groups` WHERE `Member1` = '$name'";
 
