@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class Profile extends Activity {
 
     static String userID;
-    String name, username, birthDate, gender, email, address, city, phone, mobile;
+    String name, lastname, username, birthDate, gender, email, address, city, phone, mobile;
     double singleScore, doubleScore;
     public static TextView nameTV,userNameTV, dateOfBirthTV, genderTV, emailTV, adressTV, cityTV, phoneTV, mobileTV, singleScoreTV, doubleScoreTV;
     public static Bundle instances;
@@ -50,7 +50,7 @@ public class Profile extends Activity {
 
     private void SetLabels()
     {
-        nameTV.setText(nameTV.getText() + " " +  name);
+        nameTV.setText(nameTV.getText() + " " +  name + " " + lastname);
         userNameTV.setText(userNameTV.getText() + " " +  username);
         dateOfBirthTV.setText(dateOfBirthTV.getText() + ": " +  birthDate);
         genderTV.setText(genderTV.getText() + " " +  gender);
@@ -66,6 +66,7 @@ public class Profile extends Activity {
     public void SetUserInfo()
     {
         name = PersonaliaSingleton.getInstance().GetName();
+        lastname = PersonaliaSingleton.getInstance().GetLastName();
         email = PersonaliaSingleton.getInstance().GetEmail();
         address = PersonaliaSingleton.getInstance().GetAddress();
         city = PersonaliaSingleton.getInstance().GetCity();
