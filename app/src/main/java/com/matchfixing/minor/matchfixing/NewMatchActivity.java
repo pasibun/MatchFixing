@@ -109,9 +109,9 @@ public class NewMatchActivity extends AppCompatActivity {
 
 
             matchTypes = new String[]{
-                    "Single",
-                    "Double",
-                    "Tournament"
+                    "Enkel",
+                    "Dubbel",
+                    "Toernooi"
             };
             matchDegree = new String[]
             {

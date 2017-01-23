@@ -9,7 +9,7 @@
         android:layout_height="40dp"
         android:layout_width="40dp"
         android:background="@drawable/home"
-        android:layout_marginLeft="320dp"
+        android:layout_gravity="right"
         android:onClick="home_home"/>
 
     <TextView

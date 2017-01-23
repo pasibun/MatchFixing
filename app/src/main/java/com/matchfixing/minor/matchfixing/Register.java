@@ -42,10 +42,6 @@ public class Register extends Activity {
         ctx = this;
     }
 
-    public void home_home(View view){
-        startActivity(new Intent(this, Home.class));
-    }
-
     public void register_register(View v){
         userName = userNameField.getText().toString();
         name = nameField.getText().toString();

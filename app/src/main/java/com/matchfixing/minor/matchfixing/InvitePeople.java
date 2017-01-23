@@ -122,6 +122,7 @@ public class InvitePeople extends Activity {
         String fileName = "newMatch.php";
         DbConnection b = new DbConnection();
         b.execute(databaseInfo, fileName, "NewMatch");
+        startActivity(new Intent(this, Home.class));
     }
 
     private void SetSpinner(final String spinner) {
