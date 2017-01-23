@@ -148,7 +148,7 @@ public class Invitation extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.118:80/GetInvitations.php");
+                URL url = new URL("http://141.252.224.163:80/GetInvitations.php");
 
                 String urlParams = "userID=" + userID;
 
