@@ -25,6 +25,9 @@ public class User_Group_Invite extends Activity {
     GridView userGrid;
     List<String> users;
     List<String> usersTemp;
+    List<String> names;
+    List<String> lastNames;
+    List<String> groupNames;
     Map<String, Integer> userIDs;
 
     private int previousSelectedPosition = -1;
@@ -40,8 +43,11 @@ public class User_Group_Invite extends Activity {
         invitationType = getIntent().getStringExtra("Invitation");
 
         users = new ArrayList<String>();
+        names = new ArrayList<>();
+        lastNames = new ArrayList<>();
         usersTemp = new ArrayList<String>();
         userIDs = new HashMap<String, Integer>();
+        groupNames = new ArrayList<>();
 
         mActivity = this;
 
@@ -60,12 +66,15 @@ public class User_Group_Invite extends Activity {
                 users.add(go.getGroupName().toString());
                 usersTemp.add(go.getGroupID()+ " " + go.getGroupName().toString());
                 userIDs.put(go.getGroupID() + " " + go.getGroupName().toString(), go.getGroupID());
+                groupNames.add(go.getGroupName());
             }
         } else {
             users = Groups.personList;
             for(Users_Object u : Groups.personListObject) {
                 userIDs.put(u.getUsername() + " " + u.getfName(), Integer.parseInt(u.GetUserID()));
                 usersTemp.add(u.getUsername() + " " + u.getfName());
+                names.add(u.getfName());
+                lastNames.add(u.getlName());
             }
         }
         final GridView gv = (GridView) findViewById(R.id.gridView);
@@ -93,6 +102,16 @@ public class User_Group_Invite extends Activity {
 
                 //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
                 int clickedUserID = userIDs.get(usersTemp.get(position));
+                String firstName = "";
+                String lastName = "";
+                if(names.size() > 0) {
+                    firstName = names.get(position);
+
+                    lastName = lastNames.get(position);
+                }
+                String groupName = "";
+                if(groupNames.size() > 0)
+                    groupName = groupNames.get(position);
 
                 int userID = clickedUserID;
 
@@ -100,10 +119,12 @@ public class User_Group_Invite extends Activity {
 
                 if (invitationType.equals("user")) {
                     Popup.putExtra("userID", userID);
-                    Popup.putExtra("firstName", FIRSTNAME);
+                    Popup.putExtra("firstName", firstName);
+                    Popup.putExtra("lastName", lastName);
                 } else {
                     Popup.putExtra("groupID", userID);
                     Popup.putExtra("groupOwner", GROUPOWNER);
+                    Popup.putExtra("groupName", groupName);
                 }
                 startActivity(Popup);
 

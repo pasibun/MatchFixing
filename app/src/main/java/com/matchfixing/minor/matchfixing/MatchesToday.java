@@ -24,13 +24,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 /**
  * Created by jylti on 31-10-2016.
  */
 public class MatchesToday extends Activity{
     String day, month, year;
-    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE;
+    String MATCHID, MATCHDATE, MATCHTIME, MATCHTYPE, MATCHLANE, MATCHDESCRIPTION;
 
     TextView txtView;
 
@@ -40,6 +41,7 @@ public class MatchesToday extends Activity{
     List<String> matchTimes = null;
     List<String> matchLanes = null;
     List<String> matchTypes = null;
+    List<String> matchDesc = null;
     Map<String, Integer> matchIDs;
 
     GridView matchGrid;
@@ -67,6 +69,7 @@ public class MatchesToday extends Activity{
         matchTimes = new ArrayList<>();
         matchLanes = new ArrayList<>();
         matchTypes = new ArrayList<>();
+        matchDesc = new ArrayList<>();
 
         txtView.setText(day + "-" + month + "-" + year);
         SetupView();
@@ -110,16 +113,17 @@ public class MatchesToday extends Activity{
                     //with this method we retrieve the matchID. We need this to implement in the upcoming "MATCH ATTENDEES" table.
                     int clickedMatchID = matchIDs.get(matches.get(position));
 
-                    String matchDescription = matches.get(position);
+                    String matchDescription = matchDesc.get(position);
 
                     String matchDate = matchDates.get(position);
                     String matchTime = matchTimes.get(position);
                     String matchLane = matchLanes.get(position);
                     String matchType = matchTypes.get(position);
+
                     int matchID = clickedMatchID;
 
                     Intent Popup = new Intent(MatchesToday.this, Popup.class);
-                    Popup.putExtra("matchDescription", matchDescription);
+                    Popup.putExtra("desc", matchDescription);
                     Popup.putExtra("matchID", matchID);
 
                     Popup.putExtra("matchDate", matchDate);
@@ -153,7 +157,7 @@ public class MatchesToday extends Activity{
 
             try {
 
-                URL url = new URL("http://141.252.224.118:80/GetMatch.php");
+                URL url = new URL("http://141.252.224.163:80/GetMatch.php");
                 String urlParams = "day=" + day + "&month=" + month + "&year=" + year;
 
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -196,11 +200,13 @@ public class MatchesToday extends Activity{
                     MATCHTIME = user_data.getString("matchTime");
                     MATCHTYPE = user_data.getString("MatchType");
                     MATCHLANE = user_data.getString("lane");
+                    MATCHDESCRIPTION= user_data.getString("Description");
 
                     matchDates.add(MATCHDATE);
                     matchTimes.add(MATCHTIME);
                     matchTypes.add(MATCHTYPE);
                     matchLanes.add(MATCHLANE);
+                    matchDesc.add(MATCHDESCRIPTION);
 
                     matches.add(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE);
                     matchIDs.put(MATCHTIME + " " + MATCHTYPE + " " + MATCHLANE, Integer.parseInt(MATCHID));

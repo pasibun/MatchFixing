@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class Popup extends Activity {
-    public String matchDescription, firstName, groupOwner, description, date, time, lane, type;
+    public String matchDescription, firstName, lastName, groupOwner, groupName, description, date, time, lane, type;
     public int matchID,userID, groupID;
 
     TextView matchDateTimeField;
@@ -43,7 +43,9 @@ public class Popup extends Activity {
         userID = getIntent().getIntExtra("userID",0);
         groupID = getIntent().getIntExtra("groupID",0);
         firstName = getIntent().getStringExtra("firstName");
+        lastName = getIntent().getStringExtra("lastName");
         groupOwner = getIntent().getStringExtra("groupOwner");
+        groupName = getIntent().getStringExtra("groupName");
         description = getIntent().getStringExtra("desc");
 
         date = getIntent().getStringExtra("matchDate");
@@ -72,10 +74,10 @@ public class Popup extends Activity {
         if(userID > 0)
         {
             attendMatchButton.setText("Invite");
-            matchDateTimeField.setText(firstName);
+            matchDateTimeField.setText("");
             matchLaneField.setText("");
             matchTypeField.setText("");
-            matchDescriptionField.setText(description);
+            matchDescriptionField.setText(firstName + " " + lastName);
             attendMatchButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view)
@@ -87,7 +89,7 @@ public class Popup extends Activity {
             });
         }else if(groupID > 0){
             attendMatchButton.setText("Invite");
-            matchDateTimeField.setText(groupOwner);
+            matchDateTimeField.setText(groupName);
             matchLaneField.setText("");
             matchTypeField.setText("");
             matchDescriptionField.setText(Integer.toString(groupID));
