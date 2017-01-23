@@ -39,10 +39,15 @@ public class PersonaliaSingleton {
         this.name = name;
     }
 
+    private String lastName;
+    public void SetLastName(String lastName) {this.lastName = lastName;}
+
     public String GetName()
     {
         return name;
     }
+
+    public String GetLastName(){return lastName;}
 
     private String address;
     public void SetAddress(String address) {this.address = address;}

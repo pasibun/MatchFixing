@@ -13,9 +13,9 @@ import android.widget.Toast;
  */
 public class Register extends Activity {
 
-    EditText userNameField, nameField,  passwordField, passwordCheckField, ageField, genderField, mailField,
+    EditText userNameField, nameField, lastNameField,  passwordField, passwordCheckField, ageField, genderField, mailField,
              adressField, cityField, phoneField, mobileField, singleScoreField, doubleScoreField;
-    String userName, name, password, passwordcheck, birthDate, playerGender, email, adress, city, phone, mobile, singleScore, doubleScore;
+    String userName, name, lastName, password, passwordcheck, birthDate, playerGender, email, adress, city, phone, mobile, singleScore, doubleScore;
     private static String msg;
     private static Context ctx;
 
@@ -26,6 +26,7 @@ public class Register extends Activity {
 
         userNameField = (EditText)findViewById(R.id.edtuserid);
         nameField = (EditText)findViewById(R.id.edtfullname);
+        lastNameField = (EditText) findViewById(R.id.edtsurname);
         passwordField = (EditText)findViewById(R.id.edtpass);
         passwordCheckField = (EditText)findViewById(R.id.edtpasscheck);
         ageField = (EditText)findViewById(R.id.edtuserbirthdate);
@@ -48,6 +49,7 @@ public class Register extends Activity {
     public void register_register(View v){
         userName = userNameField.getText().toString();
         name = nameField.getText().toString();
+        lastName = lastNameField.getText().toString();
         password = passwordField.getText().toString();
         passwordcheck = passwordCheckField.getText().toString();
         birthDate = ageField.getText().toString();
@@ -62,7 +64,7 @@ public class Register extends Activity {
 
         if (password.equals(passwordcheck)) {
             if(userName != null && birthDate != null && playerGender != null) {
-                String databaseInput = "username=" + userName + "&name=" + name + "&password=" + password + "&birthDate=" + birthDate + "&playerGender=" + playerGender
+                String databaseInput = "username=" + userName + "&name=" + name + "&lastName=" + lastName + "&password=" + password + "&birthDate=" + birthDate + "&playerGender=" + playerGender
                         + "&email=" + email + "&adress=" + adress + "&city=" + city + "&phone=" + phone + "&mobile=" + mobile
                         + "&singleScore=" + singleScore + "&doubleScore=" + doubleScore;
 

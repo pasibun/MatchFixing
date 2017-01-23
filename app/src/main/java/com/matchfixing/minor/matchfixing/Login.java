@@ -53,6 +53,7 @@ public class Login extends Activity{
             if(us.getPassword().matches(Password) && us.getUsername().matches(Name)) {
                 PersonaliaSingleton.getInstance().setUserID(us.GetUserID());
                 PersonaliaSingleton.getInstance().SetName(us.getfName());
+                PersonaliaSingleton.getInstance().SetLastName(us.getlName());
                 PersonaliaSingleton.getInstance().SetEmail(us.getEmail());
                 PersonaliaSingleton.getInstance().SetAddress(us.getAddress());
                 PersonaliaSingleton.getInstance().SetCity(us.getCity());
