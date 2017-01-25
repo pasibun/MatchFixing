@@ -62,7 +62,7 @@ public class Invitation extends Activity {
         s = Integer.toString(userID);
 
         txtView = (TextView) findViewById(R.id.textView2);
-        txtView.setText("Uitnodigingen");
+        txtView.setText("Hier vind je matches waar mensen jou persoonlijk voor uitgenodigd hebben. Klik een match aan om de details te kunnen zien.");
         matchGrid = (GridView) findViewById(R.id.gridView);
 
         SetupView();
@@ -148,7 +148,7 @@ public class Invitation extends Activity {
             int tmp;
 
             try {
-                URL url = new URL("http://141.252.224.163:80/GetInvitations.php");
+                URL url = new URL("http://141.252.218.158:80/GetInvitations.php");
 
                 String urlParams = "userID=" + userID;
 

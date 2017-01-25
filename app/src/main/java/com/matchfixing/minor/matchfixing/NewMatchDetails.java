@@ -47,7 +47,7 @@ public class NewMatchDetails extends Activity {
     String lane;
     static List<String> occupiedLanes;
 
-    private Context mContext;
+    public Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +71,16 @@ public class NewMatchDetails extends Activity {
     {
         matchDescription = description.getText().toString();
 
+        String errormsg = "De match is opgeslagen.";
+        Toast.makeText(mContext, errormsg, Toast.LENGTH_LONG).show();
+
         String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+"0"+
                 "&GroupID="+"0"+"&MatchDegree="+matchDegree+"&playerRankMin="+playerMin+"&playerRankMax="+playerMax+"&Description="+matchDescription+"&lane="+lane;
         String fileName = "newMatch.php";
         DbConnection b = new DbConnection();
+        //b.ctx = mContext;
         b.execute(databaseInfo, fileName, "NewMatch");
+        startActivity(new Intent(this, Home.class));
     }
 
     public void SetupBtn()
@@ -219,5 +224,4 @@ public class NewMatchDetails extends Activity {
             }
         });
     }
-
 }

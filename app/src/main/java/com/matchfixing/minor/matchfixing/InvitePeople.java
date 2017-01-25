@@ -117,6 +117,9 @@ public class InvitePeople extends Activity {
     {
         matchDescription = description.getText().toString();
 
+        String errormsg = "De match is opgeslagen.";
+        Toast.makeText(mContext, errormsg, Toast.LENGTH_LONG).show();
+
         String databaseInfo = "matchDate="+matchDate+"&matchTime="+matchTime+"&matchType="+matchType+"&UserID="+userID+
                 "&GroupID="+groupID+"&MatchDegree="+matchDegree+"&playerRankMin="+"0"+"&playerRankMax="+"0"+"&Description="+matchDescription+"&lane="+lane;
         String fileName = "newMatch.php";
