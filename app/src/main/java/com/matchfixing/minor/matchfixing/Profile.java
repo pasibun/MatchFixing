@@ -33,6 +33,8 @@ public class Profile extends Activity {
         startActivity(new Intent(this, Home.class));
     }
 
+    public void edit_Profile(View view){startActivity(new Intent(this, EditProfile.class));}
+
     public void InitializeLabels()
     {
         nameTV = (TextView) findViewById(R.id.name_field);

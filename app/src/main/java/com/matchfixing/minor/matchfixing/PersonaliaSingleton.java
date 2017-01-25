@@ -74,6 +74,11 @@ public class PersonaliaSingleton {
 
     public String GetUsername(){return username; }
 
+    private String password;
+    public void SetPassword(String password) {this.password = password;}
+
+    public String GetPassword(){return password; }
+
     private String mobile;
     public void SetMobile(String mobile) {this.mobile = mobile;}
 
