@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:weightSum="1">
 
     <Button
         android:layout_height="40dp"
@@ -11,15 +13,28 @@
         android:layout_gravity="right"
         android:onClick="home_home" />
 
+    <TextView
+        android:text="Kies een datum om de beschikbare matches van die dag te kunnen zien."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="20sp"
+        android:textColor="#00aa55"
+        android:layout_marginTop="25dp"
+        android:gravity="center" />
+
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/calendarView"
         android:showWeekNumber="true"
         android:weekNumberColor="#ff0000"
         android:clickable="true"
         android:contextClickable="true"
-        android:background="@color/colorGray"
+        android:background="#5d5d5d"
         android:touchscreenBlocksFocus="false"
-        android:textColor="#00aa55" />
+        android:textColor="#00aa55"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#5d5d5d" />
+
 </LinearLayout>
