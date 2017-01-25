@@ -54,6 +54,7 @@ public class Login extends Activity{
                 PersonaliaSingleton.getInstance().setUserID(us.GetUserID());
                 PersonaliaSingleton.getInstance().SetName(us.getfName());
                 PersonaliaSingleton.getInstance().SetLastName(us.getlName());
+                PersonaliaSingleton.getInstance().SetPassword(us.getPassword());
                 PersonaliaSingleton.getInstance().SetEmail(us.getEmail());
                 PersonaliaSingleton.getInstance().SetAddress(us.getAddress());
                 PersonaliaSingleton.getInstance().SetCity(us.getCity());

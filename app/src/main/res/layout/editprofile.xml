@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282828"
+    android:padding="20dp"
+    android:weightSum="1">
+
+    <Button
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:background="@drawable/home"
+        android:layout_alignParentRight="true"
+        android:onClick="home_home1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profiel aanpassen"
+        android:typeface="sans"
+        android:textSize="35sp"
+        android:textColor="#00aa55"
+        android:textStyle="bold"
+        android:id="@+id/profileHead"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Gebruikersnaam"
+        android:textSize="20sp"
+        android:id="@+id/usernameedt"
+        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/profileHead"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Voornaam"
+        android:textSize="20sp"
+        android:id="@+id/fullnameedt"
+        android:layout_below="@+id/usernameedt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Achternaam"
+        android:textSize="20sp"
+        android:id="@+id/surnameedt"
+        android:layout_below="@+id/fullnameedt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textSize="20sp"
+        android:hint="Wachtwoord"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:inputType="textPassword"
+        android:id="@+id/passedt"
+        android:textStyle="bold|italic"
+        android:textAllCaps="false"
+        android:layout_below="@+id/surnameedt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textSize="20sp"
+        android:hint="Herhaal wachtwoord"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:textStyle="bold|italic"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:inputType="textPassword"
+        android:id="@+id/passcheckedt"
+        android:layout_below="@+id/passedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Geboortedatum (JJJJ-MM-DD)"
+        android:textSize="20sp"
+        android:id="@+id/userbirthdateedt"
+        android:layout_below="@+id/passcheckedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Geslacht"
+        android:textSize="20sp"
+        android:id="@+id/usergenderedt"
+        android:layout_below="@+id/userbirthdateedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="E-mail"
+        android:textSize="20sp"
+        android:id="@+id/UserMailedt"
+        android:layout_below="@+id/usergenderedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Adres"
+        android:textSize="20sp"
+        android:id="@+id/UserAdressedt"
+        android:layout_below="@+id/UserMailedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Woonplaats"
+        android:textSize="20sp"
+        android:id="@+id/UserCityedt"
+        android:layout_below="@+id/UserAdressedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Telefoonnummer"
+        android:textSize="20sp"
+        android:id="@+id/UserPhoneedt"
+        android:layout_below="@+id/UserCityedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Mobiel"
+        android:textSize="20sp"
+        android:id="@+id/UserMobileedt"
+        android:layout_below="@+id/UserPhoneedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Score Enkel"
+        android:textSize="20sp"
+        android:id="@+id/UserSingleedt"
+        android:layout_below="@+id/UserMobileedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textColorHint="#ffffff"
+        android:background="#5d5d5d"
+        android:padding="0dp"
+        android:hint="Score dubbel"
+        android:textSize="20sp"
+        android:id="@+id/UserDoubleedt"
+        android:layout_below="@+id/UserSingleedt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:text="Opslaan"
+        android:textStyle="bold"
+        android:textColor="#00aa55"
+        android:id="@+id/saveProfileBtn"
+        android:onClick="save_Profile"
+        android:layout_centerHorizontal="true"
+        android:background="#5d5d5d"
+        android:layout_height="35dp"
+        android:layout_width="250sp"
+        android:layout_below="@+id/UserDoubleedt"
+        android:layout_marginTop="5dp" />
+
+
+</RelativeLayout>

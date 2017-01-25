@@ -28,14 +28,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/profile"
-        android:id="@+id/imgProfile"
-        android:layout_gravity="center"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -197,4 +189,18 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/doublescore_field" />
+
+    <Button
+        android:text="Aanpassen"
+        android:textStyle="bold"
+        android:textColor="#00aa55"
+        android:id="@+id/editProfileBtn"
+        android:onClick="edit_Profile"
+        android:layout_gravity="center"
+        android:background="#5d5d5d"
+        android:layout_height="35dp"
+        android:layout_width="250sp"
+        android:layout_marginTop="5dp" />
+
+
 </LinearLayout>
