@@ -324,7 +324,7 @@ public class NewMatchActivity extends AppCompatActivity {
         ParseDate();
         ParseTime();
         if(matchDate != null || matchTime != null) {
-            if (matchVisibility.equals("Public")) {
+            if (matchVisibility.equals("Openbaar")) {
                 StartIntent(matchDetails);
             } else {
                 StartIntent(invitePeople);

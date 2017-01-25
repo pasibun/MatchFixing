@@ -107,6 +107,8 @@ public class NewMatchDetails extends Activity {
         hourAfter = getIntent().getStringExtra("HOUR_AFTER");
     }
 
+    float progress_valueMax = 10;
+    float progress_valueMin = 0;
     public void SetupSeekBars()
     {
         playerMaxRanking = (SeekBar) findViewById(R.id.seekBar);
@@ -122,8 +124,8 @@ public class NewMatchDetails extends Activity {
             @Override
             public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser)
             {
-                progress_value = (float)progress/10;
 
+                progress_value = (float)progress/10;
                 minimum.setText(Float.toString(progress_value));
                 playerMin = Float.toString(progress_value);
             }
@@ -135,6 +137,12 @@ public class NewMatchDetails extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar)
             {
+                if(progress_value > progress_valueMax){
+                    //playerMinRanking.setProgress((int)progress_valueMax - 1);
+                    progress_value = progress_valueMax -1;
+                    playerMinRanking.setProgress((int)(progress_value * 10));
+                }
+                progress_valueMin = progress_value;
                 minimum.setText(Float.toString(progress_value));
                 playerMin = Float.toString(progress_value);
             }
@@ -159,6 +167,12 @@ public class NewMatchDetails extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar)
             {
+                if(progress_value < progress_valueMin){
+//                 playerMaxRanking.setProgress((int)progress_valueMin + 1);
+                    progress_value = progress_valueMin + 1;
+                    playerMaxRanking.setProgress((int)(progress_value * 10));
+                }
+                progress_valueMax = progress_value;
                 maximum.setText(Float.toString(progress_value));
                 playerMax = Float.toString(progress_value);
             }
