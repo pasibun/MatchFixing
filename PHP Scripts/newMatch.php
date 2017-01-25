@@ -12,14 +12,13 @@ $time = $_POST["matchTime"];
 $matchType =  $_POST["matchType"];
 $userID = $_POST["UserID"];
 $groupID = $_POST["GroupID"];
-$matchDegree = $_POST["MatchDegree"];
 $playerRankMin = $_POST["playerRankMin"];
 $playerRankMax = $_POST["playerRankMax"];
 $description = $_POST["Description"];
 $lane = $_POST["lane"];
 
-$query = "INSERT INTO matches(matchDate, matchTime, MatchType, GroupID, UserID, MatchDegree, playerRankMin, playerRankMax, Description, lane) 
-				  VALUES('$date', '$time', '$matchType', '$groupID', '$userID', '$matchDegree', '$playerRankMin', '$playerRankMax', '$description', '$lane')";
+$query = "INSERT INTO matches(matchDate, matchTime, MatchType, GroupID, UserID, playerRankMin, playerRankMax, Description, lane) 
+				  VALUES('$date', '$time', '$matchType', '$groupID', '$userID', '$playerRankMin', '$playerRankMax', '$description', '$lane')";
 
 $result = mysqli_query($con,$query);
 

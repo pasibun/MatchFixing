@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
-        android:text="Sexe:"
+        android:text="Geslacht:"
         android:typeface="sans"
         android:textSize="15sp"
         android:textColor="#00aa55"

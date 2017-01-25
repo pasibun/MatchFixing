@@ -23,18 +23,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/TimeTextField"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/DateTextField"
-        android:layout_centerHorizontal="true"
-        android:text="Tijd:"
-        android:textColor="#ffffff"
-        android:textStyle="normal|bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Wedstrijd type:"
         android:id="@+id/textView9"
         android:layout_alignTop="@+id/spinner"
@@ -78,22 +66,6 @@
         android:layout_alignParentStart="true"
         android:hapticFeedbackEnabled="true" />
 
-    <Spinner
-        android:layout_width="150dp"
-        android:layout_height="35dp"
-        android:id="@+id/spinner2"
-        android:dropDownSelector="#b0ff0101"
-        android:dropDownWidth="150dp"
-        android:background="#19ffffff"
-        android:popupBackground="#000000"
-        android:textAlignment="center"
-        android:touchscreenBlocksFocus="false"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignLeft="@+id/spinner"
-        android:layout_alignStart="@+id/spinner" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,7 +74,7 @@
         android:id="@+id/textView16"
         android:textColor="#ffffff"
         android:textStyle="normal|bold"
-        android:layout_below="@+id/spinner2"
+        android:layout_below="@+id/spinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="25dp" />
@@ -138,40 +110,13 @@
         android:layout_below="@+id/spinner3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="moeilijkheidsgraad:"
-        android:id="@+id/textView"
-        android:textColor="#ffffff"
-        android:textStyle="normal|bold"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/DateTextField"
-        android:text="Datum: "
-        android:textColor="#ffffff"
-        android:hapticFeedbackEnabled="false"
-        android:textStyle="bold"
-        android:layout_below="@+id/timeBtn"
-        android:layout_alignRight="@+id/TimeTextField"
-        android:layout_alignEnd="@+id/TimeTextField"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="50dp" />
 
     <Spinner
         android:layout_width="150dp"
         android:layout_height="35dp"
         android:id="@+id/spinner"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="70dp"
         android:dropDownSelector="#b0ff0101"
         android:dropDownWidth="150dp"
         android:background="#19ffffff"

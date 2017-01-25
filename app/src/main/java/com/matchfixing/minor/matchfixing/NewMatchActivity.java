@@ -76,8 +76,6 @@ public class NewMatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newmatch_activity);
 
-        DateTextField =  (TextView)findViewById(R.id.DateTextField);
-        TimeTextField = (TextView)findViewById(R.id.TimeTextField);
         button4 = (Button)findViewById(R.id.button4);
 
         final Calendar cal = Calendar.getInstance();
@@ -88,9 +86,6 @@ public class NewMatchActivity extends AppCompatActivity {
         ShowDialogOnButtonClick();
         ShowTimePickerDialog();
         SetSpinner("Type");
-        if(TimeTextField.getText().toString().equals("Time:") || DateTextField.getText().toString().equals("Date:")) {
-            button4.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-        }
     }
 
     public void home_home(View view){
@@ -100,7 +95,6 @@ public class NewMatchActivity extends AppCompatActivity {
     private void SetSpinner(final String spinner)
     {
         matchTypeSpinner = (Spinner)findViewById(R.id.spinner);
-        matchDegreeSpinner = (Spinner)findViewById(R.id.spinner2);
         privateSpinner = (Spinner) findViewById(R.id.spinner3);
 
         final String[] matchTypes;
@@ -110,30 +104,20 @@ public class NewMatchActivity extends AppCompatActivity {
 
             matchTypes = new String[]{
                     "Enkel",
-                    "Dubbel",
-                    "Toernooi"
-            };
-            matchDegree = new String[]
-            {
-                   "Friendly",
-                   "Competitive"
+                    "Dubbel"
             };
 
             privateMatch = new String[]
             {
-                  "Private",
-                  "Public"
+                  "Privé",
+                  "Openbaar"
             };
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchTypes);
-        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(this, R.layout.spinner_activity,matchDegree);
         ArrayAdapter<String> spinnerArrayAdapter3 = new ArrayAdapter<String>(this, R.layout.spinner_activity,privateMatch);
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_activity);
         matchTypeSpinner.setAdapter(spinnerArrayAdapter);
-
-        spinnerArrayAdapter2.setDropDownViewResource(R.layout.spinner_activity);
-        matchDegreeSpinner.setAdapter(spinnerArrayAdapter2);
 
         spinnerArrayAdapter3.setDropDownViewResource(R.layout.spinner_activity);
         privateSpinner.setAdapter(spinnerArrayAdapter3);
@@ -143,19 +127,6 @@ public class NewMatchActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                     matchType = matchTypes[position];
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        matchDegreeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                matchDegreeString = matchDegree[position];
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -225,7 +196,7 @@ public class NewMatchActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dPickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            dateField = (TextView)findViewById(R.id.DateTextField);
+
 
             year_x = year;
             month_x = month + 1;
@@ -249,7 +220,8 @@ public class NewMatchActivity extends AppCompatActivity {
 
             dateString = yearString + "-" + monthString + "-" + day;
 
-            dateField.setText("Date: " + day_x+ " / "  + month_x + " / " + year_x);
+          //  dateField.setText("Date: " + day_x+ " / "  + month_x + " / " + year_x);
+            btn.setText("Datum: " + day_x+ " / "  + month_x + " / " + year_x);
             if(hour_x != 0)
                 button4.getBackground().setColorFilter(0xFF00FF00, PorterDuff.Mode.MULTIPLY);
 
@@ -259,7 +231,7 @@ public class NewMatchActivity extends AppCompatActivity {
     private TimePickerDialog.OnTimeSetListener tPickerListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            timeField = (TextView)findViewById(R.id.TimeTextField);
+
 
             hour_x = hourOfDay;
             minute_x = minute;
@@ -269,14 +241,16 @@ public class NewMatchActivity extends AppCompatActivity {
 
             if(minute_x >= 0 && minute_x < 10)
             {
-                timeField.setText("Time: " + hour_x + ":" + "0" + minute_x);
+                //timeField.setText("Time: " + hour_x + ":" + "0" + minute_x);
+                button_stpd.setText("Tijd: " + hour_x + ":" + "0" + minute_x);
                 timeString = Integer.toString(hour_x) + ":" + "0" + Integer.toString(minute_x) + ":00";
                 timeStringAfter = Integer.toString(hourAfter) + ":" + "0" + Integer.toString(minute_x) + ":00";
                 timeStringBefore = Integer.toString(hourBefore) + ":" + "0" + Integer.toString(minute_x) + ":00";
 
                 if (hour_x >= 0 && hour_x < 10)
                 {
-                    timeField.setText("Time: " + "0" + hour_x + ":" + "0" + minute_x);
+                   // timeField.setText("Time: " + "0" + hour_x + ":" + "0" + minute_x);
+                    button_stpd.setText("Tijd: " + "0" + hour_x + ":" + "0" + minute_x);
                     timeString = Integer.toString(hour_x) + ":" + "0" + Integer.toString(minute_x) + ":00";
                     timeStringAfter = Integer.toString(hourAfter) + ":" + "0" + Integer.toString(minute_x) + ":00";
                     timeStringBefore = Integer.toString(hourBefore) + ":" + "0" + Integer.toString(minute_x) + ":00";
@@ -287,7 +261,8 @@ public class NewMatchActivity extends AppCompatActivity {
             {
                 if (hour_x >= 0 && hour_x < 10)
                 {
-                    timeField.setText("Time: " + "0" + hour_x + ":" + minute_x);
+                   // timeField.setText("Time: " + "0" + hour_x + ":" + minute_x);
+                    button_stpd.setText("Tijd: " + "0" + hour_x + ":" + minute_x);
                     timeString = Integer.toString(hour_x) + "0" + ":" + Integer.toString(minute_x) + ":00";
                     timeStringAfter = Integer.toString(hourAfter) + "0" + ":" + Integer.toString(minute_x) + ":00";
                     timeStringBefore = Integer.toString(hourBefore) + "0" + ":" + Integer.toString(minute_x) + ":00";
@@ -295,7 +270,8 @@ public class NewMatchActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    timeField.setText("Time: " + hour_x + ":" + minute_x);
+                    //timeField.setText("Time: " + hour_x + ":" + minute_x);
+                    button_stpd.setText("Tijd: " + hour_x + ":" + minute_x);
                     timeString = Integer.toString(hour_x) + ":" + Integer.toString(minute_x) + ":00";
                     timeStringAfter = Integer.toString(hourAfter) + ":" + Integer.toString(minute_x) + ":00";
                     timeStringBefore = Integer.toString(hourBefore) + ":" + Integer.toString(minute_x) + ":00";
