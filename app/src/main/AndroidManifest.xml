@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".MatchesToday" >
         </activity>
+        <activity android:name=".EditProfile" >
+        </activity>
         <activity android:name=".Popup"
             android:theme = "@style/AppTheme.CustomTheme">
         </activity>
