@@ -130,8 +130,8 @@ public class EditProfile extends Activity {
     }
 
     private void executeDB(){
-        String databaseInput = "username=" + username + "&name=" + name + "&lastName=" + lastname + "&password=" + password + "&birthDate=" + birthDate + "&playerGender=" + gender
-                + "&email=" + email + "&adress=" + address + "&city=" + city + "&phone=" + phone + "&mobile=" + mobile
+        String databaseInput = "username=" + username + "&id=" + PersonaliaSingleton.getInstance().getUserID() +  "&name=" + name + "&lastName=" + lastname + "&password=" + password + "&birthDate=" + birthDate + "&playerGender=" + gender
+                + "&email=" + email + "&address=" + address + "&city=" + city + "&phone=" + phone + "&mobile=" + mobile
                 + "&singleScore=" + singleScore + "&doubleScore=" + doubleScore;
 
         String file = "editProfile.php";
