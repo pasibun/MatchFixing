@@ -146,8 +146,8 @@ public class GroupManagment extends Activity{
 
     public void saveGroup_saveGroup(View view) {
         String name = PersonaliaSingleton.getInstance().GetUsername();
-        if (!groupName.getText().toString().equals("") && selectedPersons.size() >= 1 ||
-                !groupName.getText().toString().equals(null) && selectedPersons.size() >= 1){
+        if ((!groupName.getText().toString().equals("") && selectedPersons.size() >= 1) ||
+                (!groupName.getText().toString().equals(null) && selectedPersons.size() >= 1)){
             DbConnection b = new DbConnection();
             String databaseInfo = "username=" +  name + "&groupname=" + groupName.getText().toString();
             int count=1;
@@ -160,11 +160,6 @@ public class GroupManagment extends Activity{
             String export = "";
             b.execute(databaseInfo, file, export);
 
-            b = new DbConnection();
-            databaseInfo = "username=" + name;
-            file = "GetGroups.php";
-            export = "GetGroup";
-            b.execute(databaseInfo, file, export);
 
             startActivity(new Intent(this, Home.class));
         }else Toast.makeText(ctx, "Voer een groepsnaam in!", Toast.LENGTH_SHORT).show();

@@ -4,7 +4,7 @@ $con=mysqli_connect("localhost","root","","androidtest");
 
 $name = $_POST["username"];
  
-$sql = "SELECT id, firstName, lastName, username FROM `profile` WHERE `username` <> '$name';";
+$sql = "SELECT id, firstName,lastName, username FROM `profile` WHERE `username` <> '$name' ;";
 
 $result = mysqli_query($con, $sql);
  

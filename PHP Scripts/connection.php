@@ -9,6 +9,7 @@ if (mysqli_connect_errno($con))
 
 $username =  $_POST["username"];
 $name =  $_POST["name"];
+$lastName = $_POST["lastName"];
 $password = $_POST["password"];
 $age =  $_POST["birthDate"];
 $gender = $_POST["playerGender"];
@@ -20,8 +21,8 @@ $mobile = $_POST["mobile"];
 $singleScore = $_POST["singleScore"];
 $doubleScore = $_POST["doubleScore"];
 
-$query = "INSERT INTO profile(username, password, gender, firstName, email, adress, city, dateOfBirth, mobilePhone, phone, scoreSingle, scoreDouble) 
-				  VALUES('$username', '$password', '$gender', '$name', '$email', '$adress', '$city'
+$query = "INSERT INTO profile(username, password, gender, firstName, lastName, email, address, city, dateOfBirth, mobilePhone, phone, scoreSingle, scoreDouble) 
+				  VALUES('$username', '$password', '$gender', '$name', '$lastName', '$email', '$adress', '$city'
 				  , '$age', '$mobile', '$phone', '$singleScore', '$doubleScore')";
 
 $result = mysqli_query($con,$query);
